@@ -24,16 +24,17 @@ public class BookingDAO {
 		}
 	}
 	
-	public int reservation(String userID, String bookingDateTime, int ageOver, int ageUnder) {
-		String sql = "insert into booking values(?, ?, ?, ?, ?)";
+	public int reservation(String userID, String userPhone, String bookingDateTime, int ageOver, int ageUnder) {
+		String sql = "insert into booking values(?, ?, ?, ?, ?, ?)";
 		try {
 			Booking booking = new Booking();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userID);
-			pstmt.setString(2, bookingDateTime);
-			pstmt.setInt(3, ageOver);
-			pstmt.setInt(4, ageUnder);
-			pstmt.setInt(5, ageOver + ageUnder);
+			pstmt.setString(2, userPhone);
+			pstmt.setString(3, bookingDateTime);
+			pstmt.setInt(4, ageOver);
+			pstmt.setInt(5, ageUnder);
+			pstmt.setInt(6, ageOver + ageUnder);
 			return pstmt.executeUpdate();
 			}
 		catch(Exception e) {

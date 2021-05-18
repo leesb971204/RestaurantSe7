@@ -75,6 +75,7 @@ request.setCharacterEncoding("utf-8");
        User userex = users.getUserInfo(user.getUserID());
        users1.setUserID(userex.getUserID());
        users1.setUserName(userex.getUserName());
+       users1.setUserPhone(userex.getUserPhone());
        users1.setUserGender(userex.getUserGender());
        users1.setUserBirth(userex.getUserBirth());
        users1.setUserEmail(userex.getUserEmail());
@@ -88,8 +89,8 @@ request.setCharacterEncoding("utf-8");
                <div class="col-sm-6 center-block" style="float: none; margin: 0 auto;">
                   <h4 class="mb-3">내 정보</h4>
                   
-                  
-                     <div class="col-12">
+                  <div style= "margin-right:55px;">
+                     <div class="col-12" >
                           <label for="userID" class="form-label">ID</label>
                           <input type="text" class="form-control" placeholder = <jsp:getProperty name="users1" property="userID" /> name="userID" disabled/>
                         </div>
@@ -98,6 +99,11 @@ request.setCharacterEncoding("utf-8");
                      <div class="col-12">
                         <label for="userName" class="form-label">Name</label>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userName" /> name="userName" disabled/>
+                     </div>
+                     
+                     <div class="col-12">
+                        <label for="userPhone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userPhone" /> name="userPhone" disabled/>
                      </div>
                      
                   <div class="col-12">
@@ -114,10 +120,13 @@ request.setCharacterEncoding("utf-8");
                         <label for="userEmail" class="form-label">Email</label><br/>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userEmail" /> name="userEmail" disabled/>
                      </div>
+                     </div>
                      <br>
+                     <div>
                      <button type="button" class="btn btn-warning" onclick="location.href='Main.jsp'">메인으로</button>
                      <button type="button" class="btn btn-warning" onclick="location.href='ManageMyInfo.jsp'">내 정보 수정</button>
-                     
+                     <button type="button" class="btn btn-warning" onclick="location.href='DeleteConfirm.jsp'">회원탈퇴</button>
+                     </div>
                      </div>
                      </div>
                      </div>

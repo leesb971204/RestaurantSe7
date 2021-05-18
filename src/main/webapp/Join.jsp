@@ -70,8 +70,12 @@
 								<input type="password" class="form-control" placeholder="비밀번호" name="userPassword">		
 							</div>
 							<div class="col-12">
-								<label for="userPW" class="form-label">Name</label>
+								<label for="userName" class="form-label">Name</label>
 								<input type="text" class="form-control" placeholder="이름" name="userName">		
+							</div>
+							<div class="col-12">
+								<label for="userPhone" class="form-label">Phone Number</label>
+								<input type="text" maxlength='11' class="form-control" placeholder="010xxxxyyyy" name="userPhone">		
 							</div>
 							<div class="form-group" style="text-align: center;">
 						<div class="col-12">

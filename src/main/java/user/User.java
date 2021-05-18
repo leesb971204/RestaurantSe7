@@ -4,10 +4,17 @@ public class User {
 	private String userID;
 	private String userPassword;
 	private String userName;
+	private String userPhone;
 	private String userGender;
 	private String userBirth;
 	private String userEmail;
 	
+	public String getUserPhone() {
+		return userPhone;
+	}
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
 	public String getUserID() {
 		return userID;
 	}

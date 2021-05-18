@@ -7,11 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class UserDAO {
-	
+
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
+
 	public UserDAO() {
 		try {
 			String dbURL = "jdbc:mariadb://localhost:3306/se7";
@@ -23,7 +23,7 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public int login(String userID, String userPassword) {
 		String sql = "select userPassword from user where userID = ?";
 		try {
@@ -42,24 +42,25 @@ public class UserDAO {
 		}
 		return -2; //오류
 	}
-	
+
 	public int join(User user) {
-		  String sql = "insert into user values(?, ?, ?, ?, ?, ?)";
-		  try {
-		    pstmt = conn.prepareStatement(sql);
-		    pstmt.setString(1, user.getUserID());
-		    pstmt.setString(2, user.getUserPassword());
-		    pstmt.setString(3, user.getUserName());
-		    pstmt.setString(4, user.getUserGender());
-		    pstmt.setString(5, user.getUserBirth());
-		    pstmt.setString(6, user.getUserEmail());
-		    return pstmt.executeUpdate();
-		  }catch (Exception e) {
-		 	e.printStackTrace();
-		  }
-		  return -1;
+		String sql = "insert into user values(?, ?, ?, ?, ?, ?, ?)";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUserID());
+			pstmt.setString(2, user.getUserPassword());
+			pstmt.setString(3, user.getUserName());
+			pstmt.setString(4, user.getUserPhone());
+			pstmt.setString(5, user.getUserGender());
+			pstmt.setString(6, user.getUserBirth());
+			pstmt.setString(7, user.getUserEmail());
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
-	
+		return -1;
+	}
+
 	public User getUserInfo(String userID) {
 		String sql = "select * from user where userID = ?";
 		try {
@@ -71,9 +72,10 @@ public class UserDAO {
 				user.setUserID(rs.getString(1));
 				user.setUserPassword(rs.getString(2));
 				user.setUserName(rs.getString(3));
-				user.setUserGender(rs.getString(4));
-				user.setUserBirth(rs.getString(5));
-				user.setUserEmail(rs.getString(6));
+				user.setUserPhone(rs.getString(4));
+				user.setUserGender(rs.getString(5));
+				user.setUserBirth(rs.getString(6));
+				user.setUserEmail(rs.getString(7));
 				return user;
 			}
 		}catch (Exception e) {
@@ -81,47 +83,74 @@ public class UserDAO {
 		}
 		return null;
 	}
-	
+
 	public int editInfoPassword(String userPassword, String userID) {
 		String sql ="update user set userPassword=? where userID=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-		    pstmt.setString(1, userPassword);
-		    pstmt.setString(2, userID);
-		    return pstmt.executeUpdate();
+			pstmt.setString(1, userPassword);
+			pstmt.setString(2, userID);
+			return pstmt.executeUpdate();
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 		return -1;
 	}
-	
+
 	public int editInfoName(String userName, String userID) {
 		String sql ="update user set userName=? where userID=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-		    pstmt.setString(1, userName);
-		    pstmt.setString(2, userID);
-		    return pstmt.executeUpdate();
+			pstmt.setString(1, userName);
+			pstmt.setString(2, userID);
+			return pstmt.executeUpdate();
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 		return -1;
 	}
-	
+
 	public int editInfoEmail(String userEmail, String userID) {
 		String sql ="update user set userEmail=? where userID=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-		    pstmt.setString(1, userEmail);
-		    pstmt.setString(2, userID);
-		    return pstmt.executeUpdate();
+			pstmt.setString(1, userEmail);
+			pstmt.setString(2, userID);
+			return pstmt.executeUpdate();
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 		return -1;
 	}
-	
+
+	public int editInfoPhone(String userPhone, String userID) {
+		String sql ="update user set userPhone=? where userID=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userPhone);
+			pstmt.setString(2, userID);
+			return pstmt.executeUpdate();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	public int deleteMember(String userID){
+		String sql = "delete from user where userID=?";
+		try{
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1, userID);
+			pstmt.executeUpdate();
+			return 1;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return -1;
+	}
 }

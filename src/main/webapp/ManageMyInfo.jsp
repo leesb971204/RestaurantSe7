@@ -87,6 +87,7 @@ request.setCharacterEncoding("utf-8");
        users1.setUserID(userex.getUserID());
        users1.setUserPassword(userex.getUserPassword());
        users1.setUserName(userex.getUserName());
+       users1.setUserPhone(userex.getUserPhone());
        users1.setUserGender(userex.getUserGender());
        users1.setUserBirth(userex.getUserBirth());
        users1.setUserEmail(userex.getUserEmail());
@@ -130,6 +131,16 @@ request.setCharacterEncoding("utf-8");
                         <input type="text" class="form-control" name="userName">      
                      </div>
                      <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userName">
+                     </div>
+                     </form>
+                     
+                     <form action="ManageAction.jsp">
+                     <div class="col-13">
+                     <div class="col-12">
+                        <label for="userPhone" class="form-label">PhoneNumber</label>
+                        <input type="text" class="form-control" name="userPhone">      
+                     </div>
+                     <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userPhone">
                      </div>
                      </form>
                      

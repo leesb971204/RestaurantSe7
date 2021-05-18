@@ -2,10 +2,18 @@ package booking;
 
 public class Booking {
 	private String userID;
+	private String userPhone;
 	private String bookingDateTime;
 	private int ageOver;
 	private int ageUnder;
 	private int totalPeople;
+	
+	public String getUserPhone() {
+		return userPhone;
+	}
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
 	
 	public String getUserID() {
 		return userID;

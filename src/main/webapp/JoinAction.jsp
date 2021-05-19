@@ -8,6 +8,7 @@ request.setCharacterEncoding("utf-8");
 <jsp:useBean id="user1" class="user.User" scope="page" />
 <jsp:setProperty name="user1" property="userID" />
 <jsp:setProperty name="user1" property="userPassword" />
+<jsp:setProperty name="user1" property="userPasswordCheck" />
 <jsp:setProperty name="user1" property="userName" />
 <jsp:setProperty name="user1" property="userPhone" />
 <jsp:setProperty name="user1" property="userGender" />
@@ -35,8 +36,7 @@ request.setCharacterEncoding("utf-8");
          script.println("location.href='Main.jsp'");
          script.println("</script>");
       }
-   
-      if(user1.getUserID() == null || user1.getUserPassword() == null || user1.getUserName() == null ||
+      else if(user1.getUserID() == null || user1.getUserPassword() == null || user1.getUserName() == null || 
          user1.getUserGender() == null || user1.getUserEmail() == null || user1.getUserPhone() == null){
          PrintWriter script = response.getWriter();
          script.println("<script>");

@@ -8,7 +8,14 @@ public class User {
 	private String userGender;
 	private String userBirth;
 	private String userEmail;
+	private String userPasswordCheck;
 	
+	public String getUserPasswordCheck() {
+		return userPasswordCheck;
+	}
+	public void setUserPasswordCheck(String userPasswordCheck) {
+		this.userPasswordCheck = userPasswordCheck;
+	}
 	public String getUserPhone() {
 		return userPhone;
 	}

@@ -1,13 +1,13 @@
-<%@page import="user.UserDAO"%>
+<%@page import="booking.Booking"%>
+<%@page import="booking.BookingDAO"%>
 <%@page import="user.User"%>
-
+<%@page import="user.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="user" class="user.User" scope="session" />
-<jsp:setProperty name="user" property="userID" />
+   <jsp:useBean id="user" class="user.User" scope="session" />
 
 <!doctype html>
 <html lang="en">
@@ -20,8 +20,6 @@ request.setCharacterEncoding("utf-8");
     <title>Signin Template · Bootstrap v5.0</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-
-    
 
     <!-- Bootstrap core CSS -->
 <link href=".\\resources\\css\\bootstrap.min.css" rel="stylesheet">
@@ -65,69 +63,81 @@ request.setCharacterEncoding("utf-8");
       width: 30%;
       }
     </style>
+	
+	<script>
+    function cancelCheck(){
+    	var check=confirm("예약을 취소하시겠습니까?");
 
+    	if (check) { //true일 경우
+    		location.href="CancelAction.jsp";
+    	} else { //false일 경우
+    	    location.href="ReservationInfo.jsp";
+    	}
+    }
+    </script>
+    
     <!-- Custom styles for this template -->
     <link href=".\resources\css\signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
-    <jsp:useBean id="users" class="user.UserDAO" scope="page" />
-    <jsp:useBean id="users1" class="user.User" scope="page" />
+
+  
+    <jsp:useBean id="bookingDAO" class="booking.BookingDAO" scope="page" />
+    <jsp:useBean id="bookings" class="booking.Booking" scope="page" />
+    <jsp:useBean id="userDAO" class="user.UserDAO" scope="page" />
     <%
-       User userex = users.getUserInfo(user.getUserID());
-       users1.setUserID(userex.getUserID());
-       users1.setUserName(userex.getUserName());
-       users1.setUserPhone(userex.getUserPhone());
-       users1.setUserGender(userex.getUserGender());
-       users1.setUserBirth(userex.getUserBirth());
-       users1.setUserEmail(userex.getUserEmail());
+       User u =  userDAO.getUserInfo(user.getUserID());
+       user.setUserName(u.getUserName());
+       
+       Booking bk = bookingDAO.getReservationInfo(u.getUserID());
+	   bookings.setUserPhone(bk.getUserPhone());
+       bookings.setBookingDateTime(bk.getBookingDateTime());
+       bookings.setAgeOver(bk.getAgeOver());
+       bookings.setAgeUnder(bk.getAgeUnder());
+       bookings.setTotalPeople(bk.getTotalPeople());
     %>
 <div class="container">
             <div class="py-5 text-center">
                <img class="d-block mx-auto mb-4" src=".\resources\images\seven.svg" width="150" height="100">
-               <h2>회원 정보 확인</h2>
+               <h2>예약 정보 확인</h2>
             </div>
             <div class="row g-3">
                <div class="col-sm-6 center-block" style="float: none; margin: 0 auto;">
-                  <h4 class="mb-3">내 정보</h4>
+                  <h4 class="mb-3">예약 정보</h4>
                   
-                  <div style= "margin-right:55px;">
-                     <div class="col-12" >
-                          <label for="userID" class="form-label">ID</label>
-                          <input type="text" class="form-control" placeholder = <jsp:getProperty name="users1" property="userID" /> name="userID" disabled/>
-                        </div>
-                        
+                  <div class="col-12">
+                        <label for="userName" class="form-label">예약자</label>
+                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="user" property="userName" /> disabled/>
+                     </div>
                 
-                     <div class="col-12">
-                        <label for="userName" class="form-label">Name</label>
-                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userName" /> name="userName" disabled/>
+                <div class="col-12">
+                        <label for="userPhone" class="form-label">전화번호</label>
+                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="bookings" property="userPhone" /> disabled/>
                      </div>
                      
                      <div class="col-12">
-                        <label for="userPhone" class="form-label">Phone</label>
-                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userPhone" /> name="userPhone" disabled/>
+                        <label for="bookingDateTime" class="form-label">예약날짜 및 시간</label>
+                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="bookings" property="bookingDateTime" /> name="bookingDateTime" disabled/>
                      </div>
                      
                   <div class="col-12">
-                        <label for="userGender" class="form-label">Gender</label>
-                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userGender" /> name="userGender" disabled/>
+                        <label for="ageOver" class="form-label">대인</label>
+                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="bookings" property="ageOver" /> name="ageOver" disabled/>
                      </div>
                      
                      <div class="col-12">
-                        <label for="userBirth" class="form-label">Birthday</label><br/>
-                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userBirth" /> name="userBirth" disabled/>
+                        <label for="ageUnder" class="form-label">소인</label><br/>
+                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="bookings" property="ageUnder" /> name="ageUnder" disabled/>
                      </div>
                      
                      <div class="col-12">
-                        <label for="userEmail" class="form-label">Email</label><br/>
-                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userEmail" /> name="userEmail" disabled/>
-                     </div>
+                        <label for="totalPeople" class="form-label">총 인원</label><br/>
+                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="bookings" property="totalPeople" /> name="to" disabled/>
                      </div>
                      <br>
-                     <div>
                      <button type="button" class="btn btn-warning" onclick="location.href='Main.jsp'">메인으로</button>
-                     <button type="button" class="btn btn-warning" onclick="location.href='ManageMyInfo.jsp'">내 정보 수정</button>
-                     <button type="button" class="btn btn-warning" onclick="location.href='DeleteConfirm.jsp'">회원탈퇴</button>
-                     </div>
+                     <button type="button" class="btn btn-warning" onclick="cancelCheck()">예약 취소</button>
+                     
                      </div>
                      </div>
                      </div>

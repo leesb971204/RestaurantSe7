@@ -8,6 +8,7 @@ request.setCharacterEncoding("utf-8");
 <jsp:useBean id="user1" class="user.User" scope="page" />
 <jsp:setProperty name="user1" property="userID" />
 <jsp:setProperty name="user1" property="userPassword" />
+<jsp:setProperty name="user1" property="userPhone"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +35,7 @@ request.setCharacterEncoding("utf-8");
       if(result == 1){
          // 로그인에 성공하면 세션을 부여
          session.setAttribute("userID", user1.getUserID());
+         session.setAttribute("userPhone", user1.getUserPhone());
          PrintWriter script = response.getWriter();
          script.println("<script>");
          script.println("alert('로그인 성공')");

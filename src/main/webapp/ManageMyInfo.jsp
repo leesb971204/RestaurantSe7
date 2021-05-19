@@ -1,4 +1,3 @@
-<%@page import="java.io.PrintWriter"%>
 <%@page import="user.UserDAO"%>
 <%@page import="user.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -80,7 +79,6 @@ request.setCharacterEncoding("utf-8");
     <!-- Custom styles for this template -->
     <link href=".\resources\css\signin.css" rel="stylesheet">
   </head>
-
   <body class="text-center">
     <jsp:useBean id="users" class="user.UserDAO" scope="page" />
     <jsp:useBean id="users1" class="user.User" scope="page" />
@@ -115,7 +113,7 @@ request.setCharacterEncoding("utf-8");
                         <label for="userPassword" class="form-label">Password</label>
                         <input type="Password" class="form-control" name="userPassword">      
                      </div>
-                     <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userPassword">
+                     <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userPassword" >
                      </div>
                        </form>
                    
@@ -139,8 +137,8 @@ request.setCharacterEncoding("utf-8");
                      <form action="ManageAction.jsp">
                      <div class="col-13">
                      <div class="col-12">
-                        <label for="userPhone" class="form-label">Phone</label>
-                        <input type="text" maxlength='11' class="form-control" name="userPhone">      	
+                        <label for="userPhone" class="form-label">PhoneNumber</label>
+                        <input type="text" class="form-control" name="userPhone">      
                      </div>
                      <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userPhone">
                      </div>

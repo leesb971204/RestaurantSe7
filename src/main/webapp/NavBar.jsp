@@ -65,12 +65,11 @@
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF; font-weight:bold;">예약</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" href="Booking.jsp">예약하기</a></li>
-              <li><a class="dropdown-item" href="#">예약정보 확인</a></li>
+              <li><a class="dropdown-item" href="ReservationInfo.jsp" >예약정보 확인</a></li>
               <li><a class="dropdown-item" href="#">예약 수정</a></li>
-              <li><a class="dropdown-item" href="#">예약 취소</a></li>
+              <li><a class="dropdown-item" href="ReservationInfo.jsp">예약 취소</a></li>
             </ul>
           </li>
-
       </ul>
       <ul class="navbar-nav navbar-right">
       <li class="nav-item">
@@ -79,16 +78,18 @@
             
             if(ID!=null){
                %>
-          <a class="nav-link" href="MyInfo.jsp" style="color: #FFFFFF;font-weight:bold;height: 40px;"><img src="./resources/images/profile.png" style="position:relative; bottom:2px;"></a>
+          	 <a class="nav-link" href="MyInfo.jsp" style="color: #FFFFFF;font-weight:bold;height: 40px;"><img src="./resources/images/profile.png" style="position:relative; bottom:2px;"></a>
+			 </li>
           <%
                }
             else{
                %>
-           <a class="nav-link" href="Login.jsp" style="color: #FFFFFF; font-weight:bold;"></a>
+             <a class="nav-link" href="Login.jsp" style="color: #FFFFFF; font-weight:bold;"></a>
+             </li>
             <%
             }
             %>
-        </li>
+       
             <li class="nav-item">
            <%
             ID = (String)session.getAttribute("userID");

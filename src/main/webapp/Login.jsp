@@ -56,11 +56,11 @@
 
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" placeholder="아이디" name="userID" maxlength="20">
-      <label for="floatingInput">ID</label>
+      <label for="floatingInput">아이디</label>
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20">
-      <label for="floatingInput">Password</label>
+      <label for="floatingInput">비밀번호</label>
     </div>
     
 

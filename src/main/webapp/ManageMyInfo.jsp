@@ -102,7 +102,7 @@ request.setCharacterEncoding("utf-8");
                   <h4 class="mb-3">내 정보</h4>
                    <div class="col-13">
                    <div class="col-12">
-                        <label for="userID" class="form-label">ID</label>
+                        <label for="userID" class="form-label">아이디</label>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userID" /> name="userID" disabled>
                         </div>
                         </div>
@@ -110,7 +110,7 @@ request.setCharacterEncoding("utf-8");
                      <form action="ManageAction.jsp">
                      <div class="col-13">
                      <div class="col-12">
-                        <label for="userPassword" class="form-label">Password</label>
+                        <label for="userPassword" class="form-label">비밀번호</label>
                         <input type="Password" class="form-control" name="userPassword">      
                      </div>
                      <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userPassword" >
@@ -119,7 +119,7 @@ request.setCharacterEncoding("utf-8");
                    
                        <div class="col-13">
                      <div class="col-12">
-                        <label for="userPassword" class="form-label">PwConfirm</label>
+                        <label for="userPassword" class="form-label">비밀번호확인</label>
                         <input type="Password" class="form-control" name="userPassword">      
                      </div>
                      </div>
@@ -127,7 +127,7 @@ request.setCharacterEncoding("utf-8");
                      <form action="ManageAction.jsp">
                      <div class="col-13">
                      <div class="col-12">
-                        <label for="userName" class="form-label">Name</label>
+                        <label for="userName" class="form-label">이름</label>
                         <input type="text" class="form-control" name="userName">      
                      </div>
                      <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userName">
@@ -137,7 +137,7 @@ request.setCharacterEncoding("utf-8");
                      <form action="ManageAction.jsp">
                      <div class="col-13">
                      <div class="col-12">
-                        <label for="userPhone" class="form-label">PhoneNumber</label>
+                        <label for="userPhone" class="form-label">전화번호</label>
                         <input type="text" class="form-control" name="userPhone">      
                      </div>
                      <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userPhone">
@@ -146,14 +146,14 @@ request.setCharacterEncoding("utf-8");
                      
                   <div class="col-13">   
                   <div class="col-12">
-                        <label for="userGender" class="form-label">Gender</label>
+                        <label for="userGender" class="form-label">성별</label>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userGender" /> name="userGender" disabled>  
                      </div>
                      </div>
                      
                      <div class="col-13">
                      <div class="col-12">
-                        <label for="userBirth" class="form-label">Birthday</label><br/>
+                        <label for="userBirth" class="form-label">생년월일</label><br/>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userBirth" /> name="userBirth" disabled>      
                      </div>
                      </div>
@@ -161,7 +161,7 @@ request.setCharacterEncoding("utf-8");
                      <form action="ManageAction.jsp">
                      <div class="col-13">
                      <div class="col-12">
-                        <label for="userEmail" class="form-label">Email</label><br/>
+                        <label for="userEmail" class="form-label">이메일</label><br/>
                         <input type="email" class="form-control" name="userEmail">      
                      </div>
                      <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userEmail">

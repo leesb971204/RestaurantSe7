@@ -36,8 +36,7 @@
     
 
    <%
-      // 현재 세션 상태를 체크한다
-      String userID = null;
+       String userID = null;
    	  //String userPhone=null;
       if(session.getAttribute("userID") != null){
          userID = (String)session.getAttribute("userID");

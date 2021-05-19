@@ -92,33 +92,33 @@ request.setCharacterEncoding("utf-8");
                   
                   <div style= "margin-right:55px;">
                      <div class="col-12" >
-                          <label for="userID" class="form-label">ID</label>
+                          <label for="userID" class="form-label">아이디</label>
                           <input type="text" class="form-control" placeholder = <jsp:getProperty name="users1" property="userID" /> name="userID" disabled/>
                         </div>
                         
                 
                      <div class="col-12">
-                        <label for="userName" class="form-label">Name</label>
+                        <label for="userName" class="form-label">이름</label>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userName" /> name="userName" disabled/>
                      </div>
                      
                      <div class="col-12">
-                        <label for="userPhone" class="form-label">Phone</label>
+                        <label for="userPhone" class="form-label">전화번호</label>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userPhone" /> name="userPhone" disabled/>
                      </div>
                      
                   <div class="col-12">
-                        <label for="userGender" class="form-label">Gender</label>
+                        <label for="userGender" class="form-label">성별</label>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userGender" /> name="userGender" disabled/>
                      </div>
                      
                      <div class="col-12">
-                        <label for="userBirth" class="form-label">Birthday</label><br/>
+                        <label for="userBirth" class="form-label">생년월일</label><br/>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userBirth" /> name="userBirth" disabled/>
                      </div>
                      
                      <div class="col-12">
-                        <label for="userEmail" class="form-label">Email</label><br/>
+                        <label for="userEmail" class="form-label">이메일</label><br/>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userEmail" /> name="userEmail" disabled/>
                      </div>
                      </div>

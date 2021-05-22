@@ -43,6 +43,22 @@ public class BookingDAO {
 		return -1;
 	}
 	
+	//데이터 베이스 확인
+	public int checkReservationInfo(String userID) {
+		String sql = "select * from booking where userID = ?";
+		try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, userID);
+	         
+	         rs = pstmt.executeQuery();
+	         if(rs.next())
+	            return 1;
+	      }catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      return -1;
+	}
+	
 	public Booking getReservationInfo(String userID) {
 	      String sql = "select * from booking where userID = ?";
 	      try {

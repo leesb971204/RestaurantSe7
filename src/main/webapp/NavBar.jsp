@@ -65,7 +65,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF; font-weight:bold;">예약</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" href="Booking.jsp">예약하기</a></li>
-              <li><a class="dropdown-item" href="ReservationInfo.jsp" >예약정보 확인</a></li>
+              <li><a class="dropdown-item" href="ReservationConfirm.jsp" >예약정보 확인</a></li>
               <li><a class="dropdown-item" href="#">예약 수정</a></li>
               <li><a class="dropdown-item" href="ReservationInfo.jsp">예약 취소</a></li>
             </ul>

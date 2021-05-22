@@ -63,19 +63,7 @@ request.setCharacterEncoding("utf-8");
       width: 30%;
       }
     </style>
-	
-	<script>
-    function cancelCheck(){
-    	var check=confirm("예약을 취소하시겠습니까?");
-
-    	if (check) { //true일 경우
-    		location.href="CancelAction.jsp";
-    	} else { //false일 경우
-    	    location.href="ReservationInfo.jsp";
-    	}
-    }
-    </script>
-    
+  
     <!-- Custom styles for this template -->
     <link href=".\resources\css\signin.css" rel="stylesheet">
   </head>
@@ -136,7 +124,7 @@ request.setCharacterEncoding("utf-8");
                      </div>
                      <br>
                      <button type="button" class="btn btn-warning" onclick="location.href='Main.jsp'">메인으로</button>
-                     <button type="button" class="btn btn-warning" onclick="cancelCheck()">예약 취소</button>
+                     <button type="button" class="btn btn-warning" onclick="location.href='CancelConfirm.jsp'">예약 취소</button>
                      
                      </div>
                      </div>

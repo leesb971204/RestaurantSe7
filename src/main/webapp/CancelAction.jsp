@@ -21,7 +21,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JSP 게시판 웹 사이트</title>
+<title></title>
 </head>
 <body>
    <%
@@ -46,7 +46,7 @@
          PrintWriter script = response.getWriter();
          script.println("<script>");
          script.println("alert('예약이 취소되었습니다.')");
-         script.println("history.back()");
+         script.println("location.href='ReservationConfirm.jsp'");
          script.println("</script>");
       }
      %>

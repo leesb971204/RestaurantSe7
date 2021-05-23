@@ -8,7 +8,14 @@ public class Booking {
 	private int ageUnder;
 	private int totalPeople;
 	private int tableNumber;
+	private String carNumber;
 	
+	public String getCarNumber() {
+		return carNumber;
+	}
+	public void setCarNumber(String carNumber) {
+		this.carNumber = carNumber;
+	}
 	public int getTableNumber() {
 		return tableNumber;
 	}

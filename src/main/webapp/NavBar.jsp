@@ -67,7 +67,7 @@
               <li><a class="dropdown-item" href="BookingConfirm.jsp">예약하기</a></li>
               <li><a class="dropdown-item" href="ReservationConfirm.jsp" >예약정보 확인</a></li>
               <li><a class="dropdown-item" href="#">예약 수정</a></li>
-              <li><a class="dropdown-item" href="ReservationInfo.jsp">예약 취소</a></li>
+              <li><a class="dropdown-item" href="ReservationConfirm.jsp">예약 취소</a></li>
             </ul>
           </li>
       </ul>

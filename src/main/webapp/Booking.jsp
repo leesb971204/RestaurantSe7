@@ -81,19 +81,49 @@
                         </div>
                      </div>
                      <div class="col-12">
-                        <label for="bookingDateTime" class="form-label">bookingDateTime</label>
+                        <label for="bookingDateTime" class="form-label">예약 날짜 및 시간</label>
                         <input type="text" class="form-control" placeholder="날짜 시간" name="bookingDateTime">      
                      </div>
                      <div class="col-12">
-                        <label for="ageOver" class="form-label">ageOver</label>
+                        <label for="ageOver" class="form-label">대인</label>
                         <input type="number" class="form-control" placeholder="대인" name="ageOver">      
                      </div>
                      <div class="col-12">
-                        <label for="ageUnder" class="form-label">ageUnder</label>
+                        <label for="ageUnder" class="form-label">소인</label>
                         <input type="number" class="form-control" placeholder="소인" name="ageUnder">      
                      </div>
                      
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name ="carNumber" value="1" id="carNumber" autocomplete="off">
+                         <label class="btn btn-outline-warning" for="carNumber">자차 이용</label>
+                    
+                        <input type="radio" class="btn-check" name ="carNumber" value="0" id="carNumber2" autocomplete="off" checked>
+                       <label class="btn btn-outline-warning" for="carNumber2">이용 안함</label>
+                      </div>
+                      
+                      <div class="col-12">
+                        <label for="carNumber" class="form-label">차 번호 입력</label>
+                        <input type="text" class="form-control" name="carNumber">      
+                     </div>
+                    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+                    <script>
+                    $(document).ready(function(){
+                    	$("input:text[name=carNumber]").attr("disabled",true);
+                        // 라디오버튼 클릭시 이벤트 발생
+                        $("input:radio[name=carNumber]").click(function(){
                      
+                            if($("input[name=carNumber]:checked").val() == "1"){
+                                $("input:text[name=carNumber]").attr("disabled",false);
+                                // radio 버튼의 value 값이 1이라면 활성화
+                     
+                            }else if($("input[name=carNumber]:checked").val() == "0"){
+                                  $("input:text[name=carNumber]").attr("disabled",true);
+                                // radio 버튼의 value 값이 0이라면 비활성화
+                            }
+                        });
+                    });
+
+                    </script>
                      <input type="submit" class="btn btn-warning form-control" value="예약하기">
                      </div>
                      </div>

@@ -57,7 +57,7 @@
          PrintWriter script = response.getWriter();
          script.println("<script>");
          script.println("alert('예약이 취소되었습니다.')");
-         script.println("location.href='ReservationConfirm.jsp'");
+         script.println("location.href='Main.jsp'");
          script.println("</script>");
       }
      %>

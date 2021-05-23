@@ -27,16 +27,17 @@ request.setCharacterEncoding("utf-8");
        BookingDAO bookingdao = new BookingDAO();
        int result = bookingdao.checkReservationInfo(userID);
        
-       //예약정보가 없다면
+       //예약정보가 없다면 예약 가능
        if(result == -1){
            script.println("<script>");
-          script.println("alert('예약정보가 없습니다.')");
-          script.println("location.href='Main.jsp'");
+          script.println("location.href='Booking.jsp'");
            script.println("</script>");
        }
+       //에약정보가 있다면 2개이상 예약불가
        else if(result == 1){
           script.println("<script>");
-          script.println("location.href='ReservationInfo.jsp'");
+           script.println("alert('이미 예약정보가 있습니다.')");
+           script.println("location.href='ReservationInfo.jsp'");
           script.println("</script>");
        }
        else{

@@ -32,6 +32,7 @@
        users1.setUserGender(userex.getUserGender());
        users1.setUserBirth(userex.getUserBirth());
        users1.setUserEmail(userex.getUserEmail());
+       users1.setUserPoint(userex.getUserPoint());
     %>
     
 
@@ -61,6 +62,7 @@
             script.println("</script>");
          }else {
             session.setAttribute("userID", user.getUserID());
+            bookingDAO.pointUpdate(users1.getUserPoint(), user.getUserID());
             PrintWriter script = response.getWriter();
             script.println("<script>");
             script.println("alert('예약 성공')");

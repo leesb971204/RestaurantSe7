@@ -83,6 +83,7 @@ request.setCharacterEncoding("utf-8");
        bookings.setAgeOver(bk.getAgeOver());
        bookings.setAgeUnder(bk.getAgeUnder());
        bookings.setTotalPeople(bk.getTotalPeople());
+       bookings.setTableNumber(bk.getTableNumber());
     %>
 <div class="container">
             <div class="py-5 text-center">
@@ -121,6 +122,11 @@ request.setCharacterEncoding("utf-8");
                      <div class="col-12">
                         <label for="totalPeople" class="form-label">총 인원</label><br/>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="bookings" property="totalPeople" /> name="to" disabled/>
+                     </div>
+                     
+                     <div class="col-12">
+                        <label for="tableNumber" class="form-label">테이블 번호</label><br/>
+                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="bookings" property="tableNumber" /> name="to" disabled/>
                      </div>
                      <br>
                      <button type="button" class="btn btn-warning" onclick="location.href='Main.jsp'">메인으로</button>

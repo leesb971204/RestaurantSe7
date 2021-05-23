@@ -8,7 +8,14 @@ public class User {
 	private String userGender;
 	private String userBirth;
 	private String userEmail;
+	private int userPoint = 0;
 	
+	public int getUserPoint() {
+		return userPoint;
+	}
+	public void setUserPoint(int userPoint) {
+		this.userPoint = userPoint;
+	}
 	public String getUserPhone() {
 		return userPhone;
 	}

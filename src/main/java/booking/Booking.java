@@ -7,7 +7,14 @@ public class Booking {
 	private int ageOver;
 	private int ageUnder;
 	private int totalPeople;
+	private int tableNumber;
 	
+	public int getTableNumber() {
+		return tableNumber;
+	}
+	public void setTableNumber(int tableNumber) {
+		this.tableNumber = tableNumber;
+	}
 	public String getUserPhone() {
 		return userPhone;
 	}

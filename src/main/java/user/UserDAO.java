@@ -16,7 +16,7 @@ public class UserDAO {
 		try {
 			String dbURL = "jdbc:mariadb://localhost:3306/se7";
 			String dbID = "root";
-			String dbPassword = "1234";
+			String dbPassword = "qkrrudwn";
 			Class.forName("org.mariadb.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		}catch(Exception e) {
@@ -44,7 +44,7 @@ public class UserDAO {
 	}
 
 	public int join(User user) {
-		String sql = "insert into user values(?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into user values(?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getUserID());
@@ -54,6 +54,7 @@ public class UserDAO {
 			pstmt.setString(5, user.getUserGender());
 			pstmt.setString(6, user.getUserBirth());
 			pstmt.setString(7, user.getUserEmail());
+			pstmt.setInt(8, user.getUserPoint());
 			return pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -76,6 +77,7 @@ public class UserDAO {
 				user.setUserGender(rs.getString(5));
 				user.setUserBirth(rs.getString(6));
 				user.setUserEmail(rs.getString(7));
+				user.setUserPoint(rs.getInt(8));
 				return user;
 			}
 		}catch (Exception e) {

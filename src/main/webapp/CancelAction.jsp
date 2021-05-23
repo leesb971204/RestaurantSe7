@@ -24,7 +24,18 @@
 <title></title>
 </head>
 <body>
+	<jsp:useBean id="users" class="user.UserDAO" scope="page" />
+    <jsp:useBean id="users1" class="user.User" scope="page" />
    <%
+   User userex = users.getUserInfo(user.getUserID());
+   users1.setUserID(userex.getUserID());
+   users1.setUserName(userex.getUserName());
+   users1.setUserPhone(userex.getUserPhone());
+   users1.setUserGender(userex.getUserGender());
+   users1.setUserBirth(userex.getUserBirth());
+   users1.setUserEmail(userex.getUserEmail());
+   users1.setUserPoint(userex.getUserPoint());
+   
    String userID = null;
    if(session.getAttribute("userID") != null){
       userID = (String)session.getAttribute("userID");
@@ -32,7 +43,7 @@
    
 	   
    BookingDAO bookingdao = new BookingDAO();
-   int result = bookingdao.cancel(user.getUserID());
+   int result = bookingdao.cancel(users1.getUserPoint(), user.getUserID());
 
    if(result == -1){
          PrintWriter script = response.getWriter();

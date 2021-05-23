@@ -80,6 +80,7 @@ request.setCharacterEncoding("utf-8");
        users1.setUserGender(userex.getUserGender());
        users1.setUserBirth(userex.getUserBirth());
        users1.setUserEmail(userex.getUserEmail());
+       users1.setUserPoint(userex.getUserPoint());
     %>
 <div class="container">
             <div class="py-5 text-center">
@@ -120,6 +121,11 @@ request.setCharacterEncoding("utf-8");
                      <div class="col-12">
                         <label for="userEmail" class="form-label">이메일</label><br/>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userEmail" /> name="userEmail" disabled/>
+                     </div>
+                     
+                     <div class="col-12">
+                        <label for="userPoint" class="form-label">포인트</label><br/>
+                        <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userPoint" /> name="userPoint" disabled/>
                      </div>
                      </div>
                      <br>

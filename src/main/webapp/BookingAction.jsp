@@ -7,13 +7,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("utf-8"); %>
-<jsp:useBean id="booking" class="booking.Booking" scope="session" />
+<jsp:useBean id="booking" class="booking.Booking" scope="page" />
 <jsp:useBean id="user" class="user.User" scope="session" />
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPhone"/>
 <jsp:setProperty name="booking" property="bookingDateTime" />
 <jsp:setProperty name="booking" property="ageOver" />
 <jsp:setProperty name="booking" property="ageUnder" />
+<jsp:setProperty name="booking" property="carNumber" />
 
 <!DOCTYPE html>
 <html>
@@ -53,7 +54,7 @@
          script.println("</script>");
       }else{
          BookingDAO bookingDAO = new BookingDAO();
-         int result = bookingDAO.reservation(userID, users1.getUserPhone(), booking.getBookingDateTime(), booking.getAgeOver(), booking.getAgeUnder());
+         int result = bookingDAO.reservation(userID, users1.getUserPhone(), booking.getBookingDateTime(), booking.getAgeOver(), booking.getAgeUnder(), booking.getCarNumber());
          if(result == -1){
             PrintWriter script = response.getWriter();
             script.println("<script>");

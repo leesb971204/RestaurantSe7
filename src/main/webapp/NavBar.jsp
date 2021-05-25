@@ -79,7 +79,7 @@
             if(ID!=null){
                %>
           	 <a class="nav-link" href="MyInfo.jsp" style="color: #FFFFFF;font-weight:bold;height: 40px;"><img src="./resources/images/profile.png" style="position:relative; bottom:2px;"></a>
-			 </li>
+			 
           <%
                }
             else{

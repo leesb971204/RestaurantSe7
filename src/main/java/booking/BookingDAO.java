@@ -40,8 +40,8 @@ public class BookingDAO {
       return -1; //데이터베이스 오류
    }
 
-   public int reservation(String userID, String userPhone, String bookingDateTime, int ageOver, int ageUnder) {
-      String sql = "insert into booking values(?, ?, ?, ?, ?, ?, ?)";
+   public int reservation(String userID, String userPhone, String bookingDateTime, int ageOver, int ageUnder, String carNumber) {
+      String sql = "insert into booking values(?, ?, ?, ?, ?, ?, ?, ?)";
       try {
          Booking booking = new Booking();
          pstmt = conn.prepareStatement(sql);
@@ -52,6 +52,7 @@ public class BookingDAO {
          pstmt.setInt(5, ageUnder);
          pstmt.setInt(6, ageOver + ageUnder);
          pstmt.setInt(7, tableNumber());
+         pstmt.setString(8, carNumber);
          return pstmt.executeUpdate();
       }
       catch(Exception e) {
@@ -92,6 +93,7 @@ public class BookingDAO {
             b.setAgeUnder(rs.getInt(5));
             b.setTotalPeople(rs.getInt(6));
             b.setTableNumber(rs.getInt(7));
+            b.setCarNumber(rs.getString(8));
             return b;
          }
       }catch (Exception e) {

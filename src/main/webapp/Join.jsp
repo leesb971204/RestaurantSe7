@@ -93,40 +93,40 @@ label {
 						<div class="col-sm-12">
 							<label for="id" class="form-label">아이디</label>
 							<div style="display: flex">
-								<input type="text" class="form-control" placeholder="아이디"
-									name="userID" id="id"> <span id="overlapErr"
-									class="help-block">사용할 수 없는 아이디 입니다.</span> <span
-									class="glyphicon glyphicon-ok form-control-feedback"></span>
+								<input type="text" class="form-control" placeholder="아이디" name="userID" id="id">
+								<span id="overlapErr" class="help-block">사용할 수 없는 아이디 입니다.</span> 
+									<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 							</div>
 						</div>
+						
 						<div class="col-12">
-							<label for="userPassword" class="form-label">비밀번호</label> <input
-								type="password" class="form-control" placeholder="비밀번호"
-								name="userPassword" id="userPassword"> <span
-								id="pwdRegErr" class="help-block">8글자 이상 입력하세요.</span> <span
-								class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<label for="userPassword" class="form-label">비밀번호</label> 
+								<input type="password" class="form-control" placeholder="비밀번호" name="userPassword" id="userPassword">
+								<span id="pwdRegErr" class="help-block">8글자 이상 입력하세요.</span> 
+								<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 						</div>
+						
 						<div class="col-12">
 							<label for="userPasswordCheck" class="form-label">비밀번호확인</label>
-							<input type="password" class="form-control" placeholder="비밀번호확인"
-								name="userPasswordCheck" id="userPasswordCheck"> <span
-								id="rePwdErr" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해
-								주세요.</span> <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<input type="password" class="form-control" placeholder="비밀번호확인" name="userPasswordCheck" id="userPasswordCheck">
+								<span id="rePwdErr" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해주세요.</span>
+								<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 						</div>
+						
 						<div class="col-12">
-							<label for="userName" class="form-label">이름</label> <input
-								type="text" class="form-control" placeholder="이름"
-								name="userName">
+							<label for="userName" class="form-label">이름</label>
+							<input type="text" class="form-control" placeholder="이름" name="userName">
 						</div>
+						
 						<div class="col-12">
-							<label for="userPhone" class="form-label">전화번호</label> <input
-								type="text" maxlength='11' class="form-control"
-								placeholder="010xxxxyyyy" name="userPhone">
+							<label for="userPhone" class="form-label">전화번호</label>
+							<input type="text" maxlength='11' class="form-control" placeholder="010xxxxyyyy" name="userPhone">
 						</div>
+						
 						<div class="form-group" style="text-align: center;">
 							<div class="col-12">
-								<label>Gender</label> <select class="form-select"
-									id="userGender" name="userGender">
+								<label>Gender</label>
+								<select class="form-select" id="userGender" name="userGender">
 									<option value="" style="display: none;">성별</option>
 									<option>남자</option>
 									<option>여자</option>
@@ -135,22 +135,22 @@ label {
 						</div>
 
 						<div class="col-12">
-							<label for="userBirth" class="form-label">생년월일</label> <input
-								type="text" maxlength='8' class="form-control"
-								placeholder="ex)20210510" name="userBirth">
+							<label for="userBirth" class="form-label">생년월일</label>
+							<input type="text" maxlength='8' class="form-control" placeholder="ex)20210510" name="userBirth">
 						</div>
 
 						<div class="col-12">
-							<label for="email" class="form-label">이메일</label> <input
-								type="email" class="form-control" placeholder="이메일"
-								name="userEmail" id="email"> <span id="emailErr"
-								class="help-block">올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.</span> <span
-								class="glyphicon glyphicon-ok form-control-feedback"></span>
+							<label for="email" class="form-label">이메일</label>
+							<input type="email" class="form-control" placeholder="이메일" name="userEmail" id="email">
+							<span id="emailErr" class="help-block">올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.</span>
+							<span class="glyphicon glyphicon-ok form-control-feedback"></span>
 						</div>
+						
 						<input type="submit" class="btn btn-warning form-control"
 							value="회원가입">
 					</div>
 				</div>
+				
 				<footer class="mt-auto text-black-50">
 					<br>
 					<p>

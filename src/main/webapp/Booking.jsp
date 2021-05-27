@@ -51,6 +51,17 @@
           font-size: 3.5rem;
         }
       }
+
+      select {
+    	padding: .7em .5em; /* 여백으로 높이 설정 */
+    	/*background: url() no-repeat 95% 50%; 네이티브 화살표를 커스텀 화살표로 대체 */
+    	border: 1px solid #999;
+    	border-radius: 10px;
+		}
+		#checkboxtext {
+		text-align: left;
+		}
+      
     </style>
 
     
@@ -97,17 +108,39 @@
                      </div>
                      <div class="col-12">
                         <label for="bookingDateTime" class="form-label">예약 날짜 및 시간</label>
-                        <input type="text" class="form-control" placeholder="날짜 시간" name="bookingDateTime">      
-                     </div>
-                     <div class="col-12">
-                        <label for="ageOver" class="form-label">대인</label>
-                        <input type="number" class="form-control" placeholder="대인" name="ageOver">      
-                     </div>
-                     <div class="col-12">
-                        <label for="ageUnder" class="form-label">소인</label>
-                        <input type="number" class="form-control" placeholder="소인" name="ageUnder">      
+                        <input type="datetime-local" class="form-control" placeholder="날짜 시간" name="bookingDateTime">      
                      </div>
                      
+                     <div class="col-md-6">              
+                     <label for="ageOver" class="form-label">대인</label>
+                        <select name="ageOver" class="form-select">
+                        <option value='0' selected="selected">0</option>
+  						<option value='1'>1</option>
+  						<option value='2'>2</option>
+  						<option value='3'>3</option>
+  						<option value='4'>4</option>
+  						<option value='5'>5</option>
+  						<option value='6'>6</option>
+  						<option value='7'>7</option>
+  						<option value='8'>8</option>
+  						</select>
+  						</div>
+  						
+  						<div class="col-md-6">   
+                        <label for="ageUnder" class="form-label" >소인</label>
+                        <select name="ageUnder" class="form-select">
+                        <option value='0' selected="selected">0</option>
+  						<option value='1'>1</option>
+  						<option value='2'>2</option>
+  						<option value='3'>3</option>
+  						<option value='4'>4</option>
+  						<option value='5'>5</option>
+  						<option value='6'>6</option>
+  						<option value='7'>7</option>
+  						<option value='8'>8</option>
+                        </select> 
+                        <br>     
+                     </div>
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                         <input type="radio" class="btn-check" name ="carNumber1" value="1" id="carNumber" autocomplete="off">
                          <label class="btn btn-outline-warning" for="carNumber">자차 이용</label>
@@ -120,6 +153,15 @@
                         <label for="carNumber" class="form-label">차 번호 입력</label>
                         <input type="text" class="form-control" name="carNumber" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">      
                      </div>
+                     
+                     
+                     &nbsp;<div class="form-check" id="checkboxtext">
+  						&nbsp;<input class="form-check-input" type="checkbox" value="" id="checkboxtext">
+  						<label class="form-check-label" for="flexCheckDefault">
+   	 					No-show 방지 예약으로 10%할인 혜택을 받으시겠습니까?
+  						</label>
+  						</div>
+  						
                     <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
                     <script>
                     $(document).ready(function(){

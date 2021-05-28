@@ -16,7 +16,7 @@ public class UserDAO {
 		try {
 			String dbURL = "jdbc:mariadb://localhost:3306/se7";
 			String dbID = "root";
-			String dbPassword = "";
+			String dbPassword = "123456";
 			Class.forName("org.mariadb.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		}catch(Exception e) {
@@ -94,13 +94,13 @@ public class UserDAO {
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
-			if(rs.getString("userAuthority").equals("ADMIN")) return 1; //admin일 때 1
+			if(rs.getString("userAuthority").equals("ADMIN")) return 1; //admin�씪 �븣 1
 			}
-			else return 0; //아니면 0
+			else return 0; //�븘�땲硫� 0
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return -1; //실패했을 때
+		return -1; //�떎�뙣�뻽�쓣 �븣
 	}
 	
 	public int editInfoPassword(String userPassword, String userID) {

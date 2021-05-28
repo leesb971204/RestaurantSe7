@@ -169,12 +169,12 @@
                      
                      
                      &nbsp;<div class="form-check" id="checkboxtext">
-                    &nbsp;<input class="form-check-input" name="input_check" type="checkbox" value="1" id="input_check" />
-                    <input type="hidden" value="0" id="input_check_hidden" name="input_check" />
+                    &nbsp;<input class="form-check-input" name="notCancel" type="checkbox" value="1" id="input_check" />
                     <label class="form-check-label" for="flexCheckDefault">
                       No-show 방지 예약으로 10%할인 혜택을 받으시겠습니까?
                     </label>
                     </div>
+                    
                     
                     <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
                     <script>
@@ -194,7 +194,11 @@
                                 // radio 버튼의 value 값이 0이라면 비활성화
                             }
                         });
-                    });
+                        });
+                        $('#input_check').on('click',function(){
+                        	$('input_check').val(this.checked ? 1 : 0);
+                        });
+                    
 
                     </script>
                     

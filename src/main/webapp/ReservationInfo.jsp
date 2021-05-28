@@ -107,6 +107,7 @@ label {
        bookings.setTotalPeople(bk.getTotalPeople());
        bookings.setTableNumber(bk.getTableNumber());
        bookings.setCarNumber(bk.getCarNumber());
+       bookings.setNotCancel(bk.getNotCancel());
     %>
     
    <div class="container">
@@ -203,6 +204,7 @@ label {
                      }
                      %>
                </div>
+              
 
                <%
                   if(bk.getCarNumber()!=null){
@@ -218,7 +220,42 @@ label {
                <%
                   }
                   %>
+                   </div>
+                   
+                   
+                  <div class="col-13">
+               <div class="col-12">
+                  <label for="notCancel" class="form-label">예약 타입</label>
+                  <%
+                     if(bk.getNotCancel() == 1){
+                        %>
+                  <input type="text" class="form-control" placeholder="No-show 방지 예약" name="to" disabled />
+                     <%
+                     }
+                     if(bk.getNotCancel() == 0){
+                     %>
+                     <input type="text" class="form-control"placeholder="No-show 방지 예약 사용하지 않음" name="to" disabled />
+                     <%
+                  }
+                  %>
+               </div>
+               
+               <%
+                  if(bk.getNotCancel() == 1){
+                      %>
+               <input type="button" class="btn btn-warning" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal2" value="쿠폰">
+               <%
+                     }
+                  if(bk.getNotCancel() == 0){
+                     %>
+               <input type="button" class="btn btn-warning" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal2" value="쿠폰" disabled>
+               <%
+                  }
+                  %>
             </div>
+            
 
             <!-- Button trigger modal -->
 
@@ -246,12 +283,52 @@ label {
                   </div>
                </div>
             </div>
+            
+            <div class="modal fade" id="exampleModal2" tabindex="-1"
+               aria-labelledby="exampleModalLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">쿠폰</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                           aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                        <input type="text" class="form-control"
+                           placeholder="No-Show 방지 예약 10% 할인 쿠폰" name="to" disabled />
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                           data-bs-dismiss="modal">닫기</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
 
             <br>
             <button type="button" class="btn btn-warning"
-               onclick="location.href='Main.jsp'">메인으로</button>
-            <button type="button" class="btn btn-warning"
+               onclick="location.href='Main.jsp'">메인으로</button>&nbsp;&nbsp;
+               
+               
+               
+               
+               
+           <%
+                  if(bk.getNotCancel() == 1){
+                      %>
+               <button type="button" class="btn btn-warning"
+               onclick="location.href='NotCancelConfirm.jsp'">예약 취소</button>
+               <%
+                     }
+                  if(bk.getNotCancel() == 0){
+                     %>
+               <button type="button" class="btn btn-warning"
                onclick="location.href='CancelConfirm.jsp'">예약 취소</button>
+               <%
+                  }
+                  %>
+                      
+                      
 
          </div>
       </div>

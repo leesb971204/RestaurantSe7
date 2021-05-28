@@ -9,6 +9,7 @@ public class Booking {
 	private int totalPeople;
 	private int tableNumber;
 	private String carNumber;
+	private int notCancel;
 	
 	public String getCarNumber() {
 		return carNumber;
@@ -59,4 +60,11 @@ public class Booking {
 	public void setTotalPeople(int totalPeople) {
 		this.totalPeople = totalPeople;
 	}
+	public int getNotCancel() {
+		return notCancel;
+	}
+	public void setNotCancel(int notCancel) {
+		this.notCancel = notCancel;
+	}
+	
 }

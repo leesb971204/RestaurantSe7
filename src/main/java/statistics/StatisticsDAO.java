@@ -16,7 +16,7 @@ public class StatisticsDAO {
       try {
          String dbURL = "jdbc:mariadb://localhost:3306/se7";
          String dbID = "root";
-         String dbPassword = "871060";
+         String dbPassword = "123456";
          Class.forName("org.mariadb.jdbc.Driver");
          conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
       }catch(Exception e) {
@@ -24,7 +24,7 @@ public class StatisticsDAO {
       }
    }
    
-   //전체 예약 통계
+   //�쟾泥� �삁�빟 �넻怨�
    public int allReservation(String Date) {
       String sql = "select count(*) from booking order where bookingDateTime like ?";
       try {
@@ -34,11 +34,11 @@ public class StatisticsDAO {
          if(rs.next()) {
             return rs.getInt(1);
          }
-         return 1; //첫 번째 게시물
+         return 1; //泥� 踰덉㎏ 寃뚯떆臾�
       }catch (Exception e) {
          e.printStackTrace();
       }
-      return -1; //데이터베이스 오류
+      return -1; //�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
    }
 /*
    public int reservation(String userID, String userPhone, String bookingDateTime, int ageOver, int ageUnder, String carNumber) {
@@ -62,7 +62,7 @@ public class StatisticsDAO {
       return -1;
    }
 
-   //데이터 베이스 확인
+   //�뜲�씠�꽣 踰좎씠�뒪 �솗�씤
    public int checkReservationInfo(String userID) {
       String sql = "select * from booking where userID = ?";
       try {

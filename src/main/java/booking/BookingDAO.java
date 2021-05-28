@@ -16,7 +16,7 @@ public class BookingDAO {
       try {
          String dbURL = "jdbc:mariadb://localhost:3306/se7";
          String dbID = "root";
-         String dbPassword = "";
+         String dbPassword = "123456";
          Class.forName("org.mariadb.jdbc.Driver");
          conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
       }catch(Exception e) {
@@ -24,24 +24,24 @@ public class BookingDAO {
       }
    }
    
-   //테이블 번호 자동 부여
+   //�뀒�씠釉� 踰덊샇 �옄�룞 遺��뿬
    public int tableNumber() {   
       String sql = "select tableNumber from booking order by tableNumber desc";
       try {
          PreparedStatement pstmt = conn.prepareStatement(sql);
          rs = pstmt.executeQuery();
          if(rs.next()) {
-            return rs.getInt(1) + 1; //0부터이기때문에 +1
+            return rs.getInt(1) + 1; //0遺��꽣�씠湲곕븣臾몄뿉 +1
          }
-         return 1; //첫 번째 게시물
+         return 1; //泥� 踰덉㎏ 寃뚯떆臾�
       }catch (Exception e) {
          e.printStackTrace();
       }
-      return -1; //데이터베이스 오류
+      return -1; //�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
    }
 
-   public int reservation(String userID, String userPhone, String bookingDateTime, int ageOver, int ageUnder, String carNumber) {
-      String sql = "insert into booking values(?, ?, ?, ?, ?, ?, ?, ?)";
+   public int reservation(String userID, String userPhone, String bookingDateTime, int ageOver, int ageUnder, String carNumber, int notCancel) {
+      String sql = "insert into booking values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
       try {
          Booking booking = new Booking();
          pstmt = conn.prepareStatement(sql);
@@ -53,6 +53,7 @@ public class BookingDAO {
          pstmt.setInt(6, ageOver + ageUnder);
          pstmt.setInt(7, tableNumber());
          pstmt.setString(8, carNumber);
+         pstmt.setInt(9, notCancel);
          return pstmt.executeUpdate();
       }
       catch(Exception e) {
@@ -61,7 +62,7 @@ public class BookingDAO {
       return -1;
    }
 
-   //데이터 베이스 확인
+   //�뜲�씠�꽣 踰좎씠�뒪 �솗�씤
    public int checkReservationInfo(String userID) {
       String sql = "select * from booking where userID = ?";
       try {
@@ -94,6 +95,7 @@ public class BookingDAO {
             b.setTotalPeople(rs.getInt(6));
             b.setTableNumber(rs.getInt(7));
             b.setCarNumber(rs.getString(8));
+            b.setNotCancel(rs.getInt(9));
             return b;
          }
       }catch (Exception e) {

@@ -15,6 +15,7 @@
 <jsp:setProperty name="booking" property="ageOver" />
 <jsp:setProperty name="booking" property="ageUnder" />
 <jsp:setProperty name="booking" property="carNumber" />
+<jsp:setProperty name="booking" property="notCancel" />
 
 <!DOCTYPE html>
 <html>
@@ -54,7 +55,7 @@
          script.println("</script>");
       }else{
          BookingDAO bookingDAO = new BookingDAO();
-         int result = bookingDAO.reservation(userID, users1.getUserPhone(), booking.getBookingDateTime(), booking.getAgeOver(), booking.getAgeUnder(), booking.getCarNumber());
+         int result = bookingDAO.reservation(userID, users1.getUserPhone(), booking.getBookingDateTime(), booking.getAgeOver(), booking.getAgeUnder(), booking.getCarNumber(), booking.getNotCancel());
          if(result == -1){
             PrintWriter script = response.getWriter();
             script.println("<script>");

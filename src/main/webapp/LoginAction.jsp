@@ -10,6 +10,8 @@ request.setCharacterEncoding("utf-8");
 <jsp:setProperty name="user1" property="userID" />
 <jsp:setProperty name="user1" property="userPassword" />
 <jsp:setProperty name="user1" property="userPhone"/>
+<jsp:setProperty name="user1" property="userAuthority"/>
+
 <!DOCTYPE html>
 <html>
 <head>

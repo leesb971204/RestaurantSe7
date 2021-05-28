@@ -9,6 +9,15 @@ public class User {
 	private String userBirth;
 	private String userEmail;
 	private int userPoint = 0;
+	private String userAuthority;
+	
+	public String getUserAuthority() {
+		return userAuthority;
+	}
+	
+	public void setUserAuthority(String userAuthority) {
+		this.userAuthority = userAuthority;
+	}
 	
 	public int getUserPoint() {
 		return userPoint;

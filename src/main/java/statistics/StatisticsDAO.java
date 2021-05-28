@@ -1,22 +1,22 @@
-package booking;
+package statistics;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class BookingDAO {
+public class StatisticsDAO {
 
    private Connection conn;
    private PreparedStatement pstmt;
    private ResultSet rs;
 
 
-   public BookingDAO() {
+   public StatisticsDAO() {
       try {
          String dbURL = "jdbc:mariadb://localhost:3306/se7";
          String dbID = "root";
-         String dbPassword = "";
+         String dbPassword = "871060";
          Class.forName("org.mariadb.jdbc.Driver");
          conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
       }catch(Exception e) {
@@ -24,14 +24,15 @@ public class BookingDAO {
       }
    }
    
-   //테이블 번호 자동 부여
-   public int tableNumber() {   
-      String sql = "select tableNumber from booking order by tableNumber desc";
+   //전체 예약 통계
+   public int allReservation(String Date) {
+      String sql = "select count(*) from booking order where bookingDateTime like ?";
       try {
-         PreparedStatement pstmt = conn.prepareStatement(sql);
-         rs = pstmt.executeQuery();
+    	  pstmt = conn.prepareStatement(sql);
+    	  pstmt.setString(1, Date+"%");
+          rs = pstmt.executeQuery();
          if(rs.next()) {
-            return rs.getInt(1) + 1; //0부터이기때문에 +1
+            return rs.getInt(1);
          }
          return 1; //첫 번째 게시물
       }catch (Exception e) {
@@ -39,7 +40,7 @@ public class BookingDAO {
       }
       return -1; //데이터베이스 오류
    }
-
+/*
    public int reservation(String userID, String userPhone, String bookingDateTime, int ageOver, int ageUnder, String carNumber) {
       String sql = "insert into booking values(?, ?, ?, ?, ?, ?, ?, ?)";
       try {
@@ -150,4 +151,5 @@ public class BookingDAO {
 	      }
 	      return -1;
    }
+   */
 }

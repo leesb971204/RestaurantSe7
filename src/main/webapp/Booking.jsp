@@ -53,14 +53,14 @@
       }
 
       select {
-    	padding: .7em .5em; /* 여백으로 높이 설정 */
-    	/*background: url() no-repeat 95% 50%; 네이티브 화살표를 커스텀 화살표로 대체 */
-    	border: 1px solid #999;
-    	border-radius: 10px;
-		}
-		#checkboxtext {
-		text-align: left;
-		}
+       padding: .7em .5em; /* 여백으로 높이 설정 */
+       /*background: url() no-repeat 95% 50%; 네이티브 화살표를 커스텀 화살표로 대체 */
+       border: 1px solid #999;
+       border-radius: 10px;
+      }
+      #checkboxtext {
+      text-align: left;
+      }
       
     </style>
 
@@ -80,9 +80,21 @@
                 return false;
             }
         }
-    </script>
+   </script>
+   
+   <script>
+      document.getElementById('currentDateTime').value = 
+      new Date().toISOString().slice(0, 16);
+   </script>
 
-  </head>
+<script>
+   if (document.getElementById("input_check").checked) {
+      document.getElementById("input_check_hidden").disabled = true;
+   }
+</script>
+
+
+</head>
   <body class="text-center">
   
     <%
@@ -108,36 +120,37 @@
                      </div>
                      <div class="col-12">
                         <label for="bookingDateTime" class="form-label">예약 날짜 및 시간</label>
-                        <input type="datetime-local" class="form-control" placeholder="날짜 시간" name="bookingDateTime">      
+                        <input type="datetime-local" id='currentDateTime' class="form-control" 
+                        min= 'currentDateTime' placeholder="날짜 시간" name="bookingDateTime">      
                      </div>
                      
                      <div class="col-md-6">              
                      <label for="ageOver" class="form-label">대인</label>
                         <select name="ageOver" class="form-select">
                         <option value='0' selected="selected">0</option>
-  						<option value='1'>1</option>
-  						<option value='2'>2</option>
-  						<option value='3'>3</option>
-  						<option value='4'>4</option>
-  						<option value='5'>5</option>
-  						<option value='6'>6</option>
-  						<option value='7'>7</option>
-  						<option value='8'>8</option>
-  						</select>
-  						</div>
-  						
-  						<div class="col-md-6">   
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
+                    </select>
+                    </div>
+                    
+                    <div class="col-md-6">   
                         <label for="ageUnder" class="form-label" >소인</label>
                         <select name="ageUnder" class="form-select">
                         <option value='0' selected="selected">0</option>
-  						<option value='1'>1</option>
-  						<option value='2'>2</option>
-  						<option value='3'>3</option>
-  						<option value='4'>4</option>
-  						<option value='5'>5</option>
-  						<option value='6'>6</option>
-  						<option value='7'>7</option>
-  						<option value='8'>8</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
                         </select> 
                         <br>     
                      </div>
@@ -156,12 +169,13 @@
                      
                      
                      &nbsp;<div class="form-check" id="checkboxtext">
-  						&nbsp;<input class="form-check-input" type="checkbox" value="" id="checkboxtext">
-  						<label class="form-check-label" for="flexCheckDefault">
-   	 					No-show 방지 예약으로 10%할인 혜택을 받으시겠습니까?
-  						</label>
-  						</div>
-  						
+                    &nbsp;<input class="form-check-input" name="input_check" type="checkbox" value="1" id="input_check" />
+                    <input type="hidden" value="0" id="input_check_hidden" name="input_check" />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      No-show 방지 예약으로 10%할인 혜택을 받으시겠습니까?
+                    </label>
+                    </div>
+                    
                     <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
                     <script>
                     $(document).ready(function(){
@@ -183,6 +197,13 @@
                     });
 
                     </script>
+                    
+                    <script>
+                    $('#input_check').on('change', function(){
+                          $('#input_check_hidden').val(this.checked ? 1 : 0);
+                       });
+               </script>
+               
                      <input type="submit" class="btn btn-warning form-control" value="예약하기">
                      </div>
                      </div>

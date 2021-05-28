@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-   
+<%@page import="user.User"%>
+<%@page import="user.UserDAO"%>   
+<%@page import="java.io.PrintWriter"%>
+
+<jsp:useBean id="user" class="user.User" scope="session" />
+<jsp:setProperty name="user" property="userID" />
+<jsp:setProperty name="user" property="userAuthority"/>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -49,7 +56,7 @@
     <link href="navbar-top-fixed.css" rel="stylesheet">
   </head>
   <body>
-    
+ 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="Main.jsp" style="color: #FFFFFF; font-weight:bold;"><img src="./resources/images/seven.svg" style="position:relative; bottom:2px; width: 27px; margin-left: 5px;"></a>
@@ -70,16 +77,37 @@
               <li><a class="dropdown-item" href="ReservationConfirm.jsp">예약 취소</a></li>
             </ul>
           </li>
+
+          <li class="nav-item dropdown">
+            	<% 
+            	String ID = (String)session.getAttribute("userID");
+            	UserDAO userdao = new UserDAO();
+            	
+            	int result=userdao.checkUserAuthority(ID);
+            	if(result==1){ //관리자일 경우
+					%>
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF; font-weight:bold;">관리자</a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown02">
+	              			<li><a class="dropdown-item" href="Chart.jsp">레스토랑 통계</a></li>
+    	          			<li><a class="dropdown-item" href="#" >테이블 수정</a></li>
+        	      			<li><a class="dropdown-item" href="#">전체 회원 확인</a></li>
+            			</ul>
+					<%            		
+            	}
+            	%>
+           </li>
       </ul>
       <ul class="navbar-nav navbar-right">
       <li class="nav-item">
+      
+      
         <%
-            String ID = (String)session.getAttribute("userID");
-            
-            if(ID!=null){
+            ID = (String)session.getAttribute("userID");
+
+			if(ID!=null){
                %>
           	 <a class="nav-link" href="MyInfo.jsp" style="color: #FFFFFF;font-weight:bold;height: 40px;"><img src="./resources/images/profile.png" style="position:relative; bottom:2px;"></a>
-			 
+			 </li>
           <%
                }
             else{
@@ -113,6 +141,7 @@
             <%
             }
             %>
+            </li>
             </li>
          </ul>
     </div>

@@ -4,8 +4,8 @@
 <%@page import="table.Table"%>
 <%@page import="table.TableDAO"%>
 <!DOCTYPE html>
-<jsp:useBean id="todeletetable" class="table.Table" scope="page" />
-<jsp:setProperty name="todeletetable" property="tableName" />
+<jsp:useBean id="table" class="table.Table" scope="page" />
+<jsp:setProperty name="table" property="tableID" />
 <html>
 <head>
 <meta charset="UTF-8">
@@ -14,7 +14,7 @@
 <body>
    <%
    TableDAO tabledao = new TableDAO();
-   int result = tabledao.deleteTable(todeletetable.getTableName());
+   int result = tabledao.deleteTable(table.getTableID());
    
    if (result == -1) {
       PrintWriter script = response.getWriter();

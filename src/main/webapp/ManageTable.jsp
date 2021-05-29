@@ -70,9 +70,10 @@ pagination a.active {
                <table class="table table-striped table-sm" id="testTable">
                   <thead>
                      <tr>
-                        <th width="20%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;테이블 명</th>
-                        <th width="20%">테이블 별 인원</th>
-                        <th width="60%">비고</th>
+                        <th width="20%">테이블 명</th>
+                        <th width="10%">테이블 별 인원</th>
+                        <th width="65%">비고</th>
+                        <th width="5%"></th>
                      </tr>
                   </thead>
                   
@@ -84,16 +85,18 @@ pagination a.active {
                   for (Table table : list) {
                   %>
                      <tr>
-                        <td style="width: 20%;"><form method="get" action="ManageTableDeleteAction.jsp" enctype="multipart/form-data"><input type="submit" class="btn btn-warning " value="삭제" style="width: 30%; float: left;">&nbsp;&nbsp;<input style="width: 60%; float: right;" type="text" class="form-control" name="tableName" value="<%=table.getTableName()%>" maxlength="50" readonly></form></td>
-                        <td style="width: 20%;"><select class="form-select" disabled><option value="0" selected="selected">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></td>
-                        <td style="width: 60%;"><input type="text" class="form-control" placeholder="테이블에 대한 자세한 설명" name="b_TITLE" maxlength="50" readonly></td>
+                        <td style="width: 20%;"><input type="text" class="form-control" name="tableName" value="<%=table.getTableName()%>" maxlength="50" readonly></td>
+                        <td style="width: 10%;"><input type="text" class="form-control" name="tablePeople" value="<%=table.getTablePeople()%>" maxlength="50" readonly></td>
+                        <td style="width: 65%;"><input type="text" class="form-control" value="<%=table.getTableContent()%>"placeholder="테이블에 대한 자세한 설명" name="tableContent" maxlength="50" readonly></td>
+                        <td style="width: 5%;"><form method="post" action="ManageTableDeleteAction.jsp"><input type="hidden" name="tableID" value="<%=table.getTableID()%>"><input type="submit" class="btn btn-warning " value="삭제"></form></td>
                      </tr>
                      <%
                      }
                      %>
                   </tbody>
                </table>
-
+               
+               <input type='button' class="btn btn-secondary" value='추가' onclick="location.href='ManageTableAction.jsp'"/>
                <input type='button' class="btn btn-secondary pull-right" value='수정' onclick="location.href='ManageTableModify.jsp'" style="float: right;" />
             </main>
       </div>

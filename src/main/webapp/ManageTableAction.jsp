@@ -17,21 +17,8 @@ request.setCharacterEncoding("utf-8");
 <body>
    <%
    TableDAO tabledao = new TableDAO();
-   ArrayList<Table> tables = tabledao.getAllTables();
-   int max = 0;
-   int tmp;
-   for(Table table : tables){
-      try {
-         tmp = Integer.parseInt(table.getTableName());
-      } catch(Exception e) { //숫자형 문자열이 아닌경우 예외발생
-         continue; //예외처리
-      }
-      if (tmp > max) {
-         max = tmp;
-      }
-   }
    
-   int result = tabledao.insertTable(Integer.toString(max+1));
+   int result = tabledao.insertTable(tabledao.tableID());
    if (result == -1) {
       PrintWriter script = response.getWriter();
       script.println("<script>");

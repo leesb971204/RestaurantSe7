@@ -3,17 +3,42 @@
 <%@page import="java.io.PrintWriter"%>
 <%@page import="table.Table"%>
 <%@page import="table.TableDAO"%>
+<jsp:useBean id="table" class="table.Table" scope="page" />
+<jsp:setProperty name="table" property="*" />
 <!DOCTYPE html>
-<jsp:useBean id="editable" class="table.Table" scope="page" />
-<jsp:setProperty name="edittable" property="tableName" />
-<jsp:setProperty name="edittable" property="tablePeople" />
-<jsp:setProperty name="edittable" property="tableContent" />
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+	TableDAO tabledao = new TableDAO();
+	int result;
+	
+	if ((table.getTableID() != 0 && table.getTableName() != null && table.getTablePeople() != 0 && table.getTableContent() != null) == true) {
+		result = tabledao.manageTableInfo(table.getTableID(), table.getTableName(), table.getTablePeople(), table.getTableContent());
+		if (result == -1) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('데이터베이스 오류')");
+			script.println("history.back()");
+			script.println("</script>");
+		} else {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('테이블 정보 수정 완료')");
+			script.println("location.href='ManageTableModify.jsp'");
+			script.println("</script>");
+		}
+	} else {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('입력이 안 된 사항이 있습니다')");
+		script.println("history.back()");
+		script.println("</script>");
+	}
+	%>
 
 </body>
 </html>

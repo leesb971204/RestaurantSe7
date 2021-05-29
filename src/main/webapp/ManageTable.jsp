@@ -73,7 +73,7 @@ pagination a.active {
                         <th width="20%">테이블 명</th>
                         <th width="10%">테이블 별 인원</th>
                         <th width="65%">비고</th>
-                        <th width="5%"></th>
+                        <th width="5%">
                      </tr>
                   </thead>
                   
@@ -86,17 +86,16 @@ pagination a.active {
                   %>
                      <tr>
                         <td style="width: 20%;"><input type="text" class="form-control" name="tableName" value="<%=table.getTableName()%>" maxlength="50" readonly></td>
-                        <td style="width: 10%;"><input type="text" class="form-control" name="tablePeople" value="<%=table.getTablePeople()%>" maxlength="50" readonly></td>
-                        <td style="width: 65%;"><input type="text" class="form-control" value="<%=table.getTableContent()%>"placeholder="테이블에 대한 자세한 설명" name="tableContent" maxlength="50" readonly></td>
-                        <td style="width: 5%;"><form method="post" action="ManageTableDeleteAction.jsp"><input type="hidden" name="tableID" value="<%=table.getTableID()%>"><input type="submit" class="btn btn-warning " value="삭제"></form></td>
+                        <td style="width: 10%;"><input type="text" class="form-control" name="tablePeople" value="<%=table.getTablePeople()%>" readonly></td>
+                        <td style="width: 65%;"><input type="text" class="form-control" value="<%=table.getTableContent()%>" name="b_TITLE" maxlength="50" readonly></td>
+                     	<td style="width: 5%;"><form method="get" action="ManageTableDeleteAction.jsp" ><input type="hidden" class="form-control" name="tableID" value="<%=table.getTableID()%>"><input type="submit" class="btn btn-warning " value="삭제"></form></td>
                      </tr>
                      <%
                      }
                      %>
                   </tbody>
                </table>
-               
-               <input type='button' class="btn btn-secondary" value='추가' onclick="location.href='ManageTableAction.jsp'"/>
+
                <input type='button' class="btn btn-secondary pull-right" value='수정' onclick="location.href='ManageTableModify.jsp'" style="float: right;" />
             </main>
       </div>

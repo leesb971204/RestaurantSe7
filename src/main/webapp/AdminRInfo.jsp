@@ -44,7 +44,8 @@ request.setCharacterEncoding("utf-8");
     </style>
 
 <!-- Custom styles for this template -->
-
+    <link href="dashboard.css" rel="stylesheet">
+    <link href="css/bootstrap.css">
 </head>
 <body>
 <div class="container-fluid" style = "padding : 100px;">

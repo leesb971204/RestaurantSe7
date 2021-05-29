@@ -6,15 +6,6 @@ public class Table {
 	private int tablePeople;
 	private String tableContent;
 
-	
-	public int getTableID() {
-		return tableID;
-	}
-
-	public void setTableID(int tableID) {
-		this.tableID = tableID;
-	}
-
 	public int getTablePeople() {
 		return tablePeople;
 	}
@@ -37,5 +28,13 @@ public class Table {
 
 	public void setTableName(String tableName) {
 		this.tableName = tableName;
+	}
+	
+	public int getTableID() {
+		return tableID;
+	}
+
+	public void setTableID(int tableID) {
+		this.tableID = tableID;
 	}
 }

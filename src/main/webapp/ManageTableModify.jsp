@@ -53,6 +53,11 @@ pagination a.active {
    height: 70px;
    background: #ccc;
 }
+
+.col-12 {
+	display: flex;
+	margin: 10px 0px;
+}
 </style>
 
 
@@ -65,39 +70,27 @@ pagination a.active {
       <div class="row">
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
                style="margin-right: 111px;">
-
                <h2>테이블 정보 수정</h2>
-               <table class="table table-striped table-sm" id="testTable">
-                  <thead>
-                     <tr>
-                        <th width="15%">테이블 명</th>
-                        <th width="20%">테이블 별 인원</th>
-                        <th width="60%">비고</th>
-                        <th width="5%"></th>
-                     </tr>
-                  </thead>
-                  
                   <br>
-                  <tbody id='tbody'>
                   <%
                   TableDAO tabledao = new TableDAO();
                   ArrayList<Table> list = tabledao.getAllTables();
                   for (Table table : list) {
                   %>
-                     <tr>
-                        <td style="width: 15%;"><input type="text" class="form-control" name="tableName" value="<%=table.getTableName()%>" maxlength="50" readonly></td>
-                        <td style="width: 20%;"><select class="form-select" name ="tablePeople" disabled><option value="<%=table.getTablePeople()%>" selected="selected">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></td>
-                        <td style="width: 60%;"><input type="text" class="form-control" value="<%=table.getTableContent()%>"placeholder="테이블에 대한 자세한 설명" name="tableContent" maxlength="50" readonly></td>
-                        <td style="width: 5%;"><form method="post" action="ManageTableDeleteAction.jsp"><input type="hidden" name="tableID" value="<%=table.getTableID()%>"><input type="submit" class="btn btn-warning " value="삭제"></form></td>
-                     </tr>
-                     <%
-                     }
-                     %>
-                  </tbody>
-               </table>
-               
-               <input type='button' class="btn btn-secondary" value='추가' onclick="location.href='ManageTableAction.jsp'"/>
-               <input type='button' class="btn btn-secondary pull-right" value='수정' onclick="location.href='ManageTableModify.jsp'" style="float: right;" />
+                  <form method="get" action="EditTableInfo.jsp" >
+	                  <div class="col-12">
+						<input style="width: 20%;" type="text" class="form-control" name="tableName" value="<%=table.getTableName()%>" maxlength="50">&nbsp;&nbsp;
+						<select style="width: 15%;" class="form-select" name="tablePeople"><option value="0" selected="selected">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>&nbsp;&nbsp;
+						<input style="width: 60%;" type="text" class="form-control" value="<%=table.getTableContent()%>" name="tableContent" maxlength="50">&nbsp;&nbsp;
+						<input style="width: 5%;" type="hidden" class="form-control" name="tableID" value="<%=table.getTableID()%>"><input type="submit" class="btn btn-warning " value="수정">
+	                  </div>
+                  </form>
+                  <%
+                   }
+                   %>
+                 
+
+				<input type='button' class="btn btn-secondary pull-left" value='추가' onclick="location.href='ManageTableAction.jsp'" style="float: left;" />
             </main>
       </div>
    </div>

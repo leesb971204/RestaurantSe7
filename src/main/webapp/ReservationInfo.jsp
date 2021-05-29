@@ -97,7 +97,7 @@ label {
        user.setUserName(u.getUserName());
        
        Booking bk = bookingDAO.getReservationInfo(u.getUserID());
-      bookings.setUserPhone(bk.getUserPhone());
+       bookings.setUserPhone(bk.getUserPhone());
        bookings.setBookingDateTime(bk.getBookingDateTime());
        
        String dateTime = (bk.getBookingDateTime().substring(0, 16));

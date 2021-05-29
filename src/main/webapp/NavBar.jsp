@@ -68,33 +68,36 @@
         <li class="nav-item">
           <a class="nav-link" href="#" style="color: #FFFFFF; font-weight:bold;">소개</a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF; font-weight:bold;">예약</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="BookingConfirm.jsp">예약하기</a></li>
-              <li><a class="dropdown-item" href="ReservationConfirm.jsp" >예약정보 확인</a></li>
-              <li><a class="dropdown-item" href="#">예약 수정</a></li>
-              <li><a class="dropdown-item" href="ReservationConfirm.jsp">예약 취소</a></li>
-            </ul>
-          </li>
 
           <li class="nav-item dropdown">
-            	<% 
-            	String ID = (String)session.getAttribute("userID");
-            	UserDAO userdao = new UserDAO();
-            	
-            	int result=userdao.checkUserAuthority(ID);
-            	if(result==1){ //관리자일 경우
-					%>
-					<a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF; font-weight:bold;">관리자</a>
-						<ul class="dropdown-menu" aria-labelledby="dropdown02">
-	              			<li><a class="dropdown-item" href="Chart.jsp">레스토랑 통계</a></li>
-    	          			<li><a class="dropdown-item" href="#" >테이블 수정</a></li>
-        	      			<li><a class="dropdown-item" href="#">전체 회원 확인</a></li>
-            			</ul>
-					<%            		
-            	}
-            	%>
+               <% 
+               String ID = (String)session.getAttribute("userID");
+               UserDAO userdao = new UserDAO();
+               int result=userdao.checkUserAuthority(ID);
+               
+               if(result==1){ //관리자일 경우
+               %>
+               <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF; font-weight:bold;">관리자</a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                          <li><a class="dropdown-item" href="Chart.jsp">레스토랑 통계</a></li>
+    	          		  <li><a class="dropdown-item" href="ManageTable.jsp" >테이블 수정</a></li>
+        	      		  <li><a class="dropdown-item" href="AdminManage.jsp">전체 회원 확인</a></li>
+        	      		  <li><a class="dropdown-item" href="AdminRInfo.jsp">예약자 정보 확인</a></li>
+                     </ul>
+               <%                  
+               }
+               else{
+                  %>
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF; font-weight:bold;">예약</a>
+                     <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                          <li><a class="dropdown-item" href="BookingConfirm.jsp">예약하기</a></li>
+                          <li><a class="dropdown-item" href="ReservationConfirm.jsp" >예약정보 확인</a></li>
+                          <li><a class="dropdown-item" href="#">예약 수정</a></li>
+                          <li><a class="dropdown-item" href="ReservationConfirm.jsp">예약 취소</a></li>
+                     </ul>
+                  <%
+               }
+               %>
            </li>
       </ul>
       <ul class="navbar-nav navbar-right">
@@ -104,10 +107,9 @@
         <%
             ID = (String)session.getAttribute("userID");
 
-			if(ID!=null){
+         if(ID!=null){
                %>
-          	 <a class="nav-link" href="MyInfo.jsp" style="color: #FFFFFF;font-weight:bold;height: 40px;"><img src="./resources/images/profile.png" style="position:relative; bottom:2px;"></a>
-			 </li>
+              <a class="nav-link" href="MyInfo.jsp" style="color: #FFFFFF;font-weight:bold;height: 40px;"><img src="./resources/images/profile.png" style="position:relative; bottom:2px;"></a>
           <%
                }
             else{

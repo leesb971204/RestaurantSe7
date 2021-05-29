@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import user.User;
 
 public class BookingDAO {
 
@@ -16,7 +19,7 @@ public class BookingDAO {
       try {
          String dbURL = "jdbc:mariadb://localhost:3306/se7";
          String dbID = "root";
-         String dbPassword = "123456";
+         String dbPassword = "Joonhoo1!";
          Class.forName("org.mariadb.jdbc.Driver");
          conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
       }catch(Exception e) {
@@ -24,20 +27,20 @@ public class BookingDAO {
       }
    }
    
-   //�뀒�씠釉� 踰덊샇 �옄�룞 遺��뿬
+   // 뀒 씠釉  踰덊샇  옄 룞 遺  뿬
    public int tableNumber() {   
       String sql = "select tableNumber from booking order by tableNumber desc";
       try {
          PreparedStatement pstmt = conn.prepareStatement(sql);
          rs = pstmt.executeQuery();
          if(rs.next()) {
-            return rs.getInt(1) + 1; //0遺��꽣�씠湲곕븣臾몄뿉 +1
+            return rs.getInt(1) + 1; //0遺  꽣 씠湲곕븣臾몄뿉 +1
          }
-         return 1; //泥� 踰덉㎏ 寃뚯떆臾�
+         return 1; //泥  踰덉㎏ 寃뚯떆臾 
       }catch (Exception e) {
          e.printStackTrace();
       }
-      return -1; //�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
+      return -1; // 뜲 씠 꽣踰좎씠 뒪  삤瑜 
    }
 
    public int reservation(String userID, String userPhone, String bookingDateTime, int ageOver, int ageUnder, String carNumber, int notCancel) {
@@ -62,7 +65,7 @@ public class BookingDAO {
       return -1;
    }
 
-   //�뜲�씠�꽣 踰좎씠�뒪 �솗�씤
+   // 뜲 씠 꽣 踰좎씠 뒪  솗 씤
    public int checkReservationInfo(String userID) {
       String sql = "select * from booking where userID = ?";
       try {
@@ -105,17 +108,17 @@ public class BookingDAO {
    }
 
    public int cancel(int userPoint, String userID) {
-	  String sql = "update user set userPoint=? where userID=?";
-	  try {
-	         pstmt=conn.prepareStatement(sql);
-	         pstmt.setInt(1, userPoint - 1000);
-	         pstmt.setString(2, userID);
-	         pstmt.executeUpdate();
-	      }catch(Exception e) {
-	         e.printStackTrace();
-	         return -1;
-	      }
-			  
+     String sql = "update user set userPoint=? where userID=?";
+     try {
+            pstmt=conn.prepareStatement(sql);
+            pstmt.setInt(1, userPoint - 1000);
+            pstmt.setString(2, userID);
+            pstmt.executeUpdate();
+         }catch(Exception e) {
+            e.printStackTrace();
+            return -1;
+         }
+           
       sql = "delete from booking where userID=?";
       try {
          pstmt=conn.prepareStatement(sql);
@@ -141,15 +144,54 @@ public class BookingDAO {
      }
    
    public int pointUpdate(int userPoint, String userID) {
-	   String sql = "update user set userPoint=? where userID=?";
-	   try {
-	         pstmt=conn.prepareStatement(sql);
-	         pstmt.setInt(1, userPoint + 1000);
-	         pstmt.setString(2, userID);
-	         return pstmt.executeUpdate();
-	      }catch(Exception e) {
-	         e.printStackTrace();
-	      }
-	      return -1;
+      String sql = "update user set userPoint=? where userID=?";
+      try {
+            pstmt=conn.prepareStatement(sql);
+            pstmt.setInt(1, userPoint + 1000);
+            pstmt.setString(2, userID);
+            return pstmt.executeUpdate();
+         }catch(Exception e) {
+            e.printStackTrace();
+         }
+         return -1;
+   }
+   
+   public ArrayList<Booking> getBookingAll(){
+      ArrayList<Booking> list = new ArrayList<Booking>();
+      try {
+      String sql = "select * from booking";
+      pstmt = conn.prepareStatement(sql);
+      rs = pstmt.executeQuery();
+      while(rs.next()){
+         Booking booking = new Booking();
+         //user.setUserName(rs.getString(3));
+         booking.setUserID(rs.getString(1));
+         booking.setBookingDateTime(rs.getString(3));
+         booking.setUserPhone(rs.getString(2));
+         booking.setAgeOver(rs.getInt(4));
+         booking.setAgeUnder(rs.getInt(5));
+         booking.setTotalPeople(rs.getInt(6));
+         list.add(booking);
+      }
+      }catch(Exception e){
+      e.printStackTrace();
+   }
+      return list;
+   }
+   
+   public String getUserName(String ID) {
+      String sql="select userName from user where userID=?";
+      System.out.println(ID);
+      try {
+         pstmt=conn.prepareStatement(sql);
+         pstmt.setString(1, ID);
+         rs = pstmt.executeQuery();
+         if(rs.next()) {
+            return rs.getString(1);
+         }
+      }catch(Exception e){
+         e.printStackTrace();
+      }
+      return "Can't find";
    }
 }

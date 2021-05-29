@@ -1,16 +1,17 @@
 <%@page import="user.User"%>
 <%@page import="user.UserDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
-
+<%
+request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 
     <!-- Bootstrap core CSS -->
-<link href=".\resources\css\bootstrap.min.css" rel="stylesheet">
+<link href=".\\resources\\css\\bootstrap.min.css" rel="stylesheet">
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -21,8 +22,8 @@
 <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
 <meta name="theme-color" content="#7952b3">
 
-
-    <style>
+<%@ include file="NavBar.jsp"%>
+    <style type = "text/css">
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -36,47 +37,54 @@
           font-size: 3.5rem;
         }
       }
+      th, td {
+        text-align: center;
+      }
     </style>
 
 <title>Insert title here</title>
 <!-- Custom styles for this template -->
-    <link href=".\resources\css\dashboard.css" rel="stylesheet">
+
 </head>
 <body>
 
 <div class="container-fluid" style = "padding : 100px;">
-   <h2>테스트</h2>
+<div class="row">
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style = "margin-right : 111px;">
+   <h2>회원 정보 확인</h2>
    <div class="table-responsive">
       <table class="table table-striped table-sm">
          <thead>
             <tr>
-               <th>#</th>
-               <th>이름</th>
-               <th>전화번호</th>
-               <th>이메일</th>
+               <th width = "10%">#</th>
+               <th width = "20%">이름</th>
+               <th width = "35%">전화번호</th>
+               <th width = "35%">이메일</th>
             </tr>
          </thead>
          <%
-      UserDAO userdao = new UserDAO();
+
       ArrayList<User> list = userdao.getMemberAll();
       
       int i = 1;
-      for(User user : list){
+      for(User user1 : list){
       %>
          <tbody>
             <tr>
                <td><%=i++%></td>
-               <td><%=user.getUserName() %></td>
-               <td><%=user.getUserPhone() %></td>
-               <td><%=user.getUserEmail() %></td>
+               <td><%=user1.getUserName() %></td>
+               <td><%=user1.getUserPhone() %></td>
+               <td><%=user1.getUserEmail() %></td>
             </tr>
             <%
       }
-   %>
+   		%>
          </tbody>
       </table>
    </div>
+   </main>
    </div>
-   <script src=".\resources\js\bootstrap.bundle.min.js"></script>
+   </div>
+   <script src=".\resources\js\dashboard.js"></script>
 </body>
 </html>

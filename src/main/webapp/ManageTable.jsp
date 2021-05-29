@@ -55,18 +55,14 @@ pagination a.active {
 }
 </style>
 
-<jsp:useBean id="table1" class="table.Table" scope="session" />
-<jsp:setProperty name="table1" property="tableName" />
 
 <!-- Custom styles for this template -->
 <link href="dashboard.css" rel="stylesheet">
 <link href="css/bootstrap.css">
 </head>
 <body>
-
    <div class="container-fluid" style="padding: 100px;">
       <div class="row">
-         <form method="post" action="ManageTableAction.jsp">
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
                style="margin-right: 111px;">
 
@@ -74,13 +70,12 @@ pagination a.active {
                <table class="table table-striped table-sm" id="testTable">
                   <thead>
                      <tr>
-                        <th width="20%">테이블 명</th>
+                        <th width="20%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;테이블 명</th>
                         <th width="20%">테이블 별 인원</th>
-                        <th width="55%">비고</th>
-                        <th width="5%"></th>
+                        <th width="60%">비고</th>
                      </tr>
                   </thead>
-
+                  
                   <br>
                   <tbody id='tbody'>
                   <%
@@ -89,12 +84,9 @@ pagination a.active {
                   for (Table table : list) {
                   %>
                      <tr>
-                     
-                        <td style="width: 20%;"><input type="text" class="form-control" value="<%=table.getTableName()%>" name="b_TITLE" maxlength="50"></td>
-                        <td style="width: 20%;"><select class="form-select"><option value="0" selected="selected">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></td>
-                        <td style="width: 55%;"><input type="text" class="form-control" placeholder="테이블에 대한 자세한 설명" name="b_TITLE" maxlength="50"></td>
-                        <td style="width: 5%;"><input type="button" class="btn btn-warning" value="삭제"
-                        onclick="location.href='Test.jsp'"></td>
+                        <td style="width: 20%;"><form method="get" action="ManageTableDeleteAction.jsp" enctype="multipart/form-data"><input type="submit" class="btn btn-warning " value="삭제" style="width: 30%; float: left;">&nbsp;&nbsp;<input style="width: 60%; float: right;" type="text" class="form-control" name="tableName" value="<%=table.getTableName()%>" maxlength="50" readonly></form></td>
+                        <td style="width: 20%;"><select class="form-select" disabled><option value="0" selected="selected">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></td>
+                        <td style="width: 60%;"><input type="text" class="form-control" placeholder="테이블에 대한 자세한 설명" name="b_TITLE" maxlength="50" readonly></td>
                      </tr>
                      <%
                      }
@@ -102,47 +94,9 @@ pagination a.active {
                   </tbody>
                </table>
 
-
-               <input type="submit" class="btn btn-secondary pull-right"
-                  value="저장" style="float: right;"> <input type='button'
-                  class="btn btn-secondary pull-left" value='행추가'
-                  onclick="addRow(); location.href='ManageTableAction.jsp'"
-                  style="float: left;" />
+               <input type='button' class="btn btn-secondary pull-right" value='수정' onclick="location.href='ManageTableModify.jsp'" style="float: right;" />
             </main>
-         </form>
       </div>
    </div>
-
-   <script>
-      function addRow() {
-         // table element 찾기
-         var table = document.getElementById('tbody');
-
-         var row = tbody.insertRow(tbody.rows.length); // 하단에 추가
-
-         // 새 행(Row)에 Cell 추가
-         var newCell1 = row.insertCell(0);
-         var newCell2 = row.insertCell(1);
-         var newCell3 = row.insertCell(2);
-         var newCell4 = row.insertCell(3);
-
-         // Cell에 텍스트 추가
-         newCell1.innerHTML = '<td style="width: 20%;"><input type="text" class="form-control" placeholder="테이블 이름 입력" name="b_TITLE" maxlength="50"></td>';
-         newCell2.innerHTML = '<td style="width: 20%;"><select class="form-select"><option value="0" selected="selected">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></td>';
-         newCell3.innerHTML = '<td style="width: 55%;"><input type="text" class="form-control" placeholder="테이블에 대한 자세한 설명" name="b_TITLE" maxlength="50"></td>';
-         newCell4.innerHTML = '<td style="width: 5%;"><input type="button" class="btn btn-warning" value="삭제"></td>';
-
-         var eventTarget = document
-               .getElementsByClassName('btn btn-warning')
-
-         for (var i = 0; i < eventTarget.length; i++) {
-            eventTarget[i].addEventListener('click', function() {
-               var parent = document.querySelector('#testTable tbody')
-               parent.removeChild(this.parentElement.parentElement)
-               i--
-            })
-         }
-      }
-   </script>
 </body>
 </html>

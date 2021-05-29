@@ -16,7 +16,7 @@ public class TableDAO {
       try {
          String dbURL = "jdbc:mariadb://localhost:3306/se7";
          String dbID = "root";
-         String dbPassword = "Joonhoo1!";
+         String dbPassword = "1234";
          Class.forName("org.mariadb.jdbc.Driver");
          conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
       }catch(Exception e) {
@@ -24,11 +24,11 @@ public class TableDAO {
       }
    }
    
-   public int insertTable() {
+   public int insertTable(String tableName) {
       String sql = "insert into `table` values(?)";
       try {
          pstmt = conn.prepareStatement(sql);
-         pstmt.setString(1, "테이블 이름 입력");
+         pstmt.setString(1, tableName);
          return pstmt.executeUpdate();
       }catch (Exception e) {
          e.printStackTrace();

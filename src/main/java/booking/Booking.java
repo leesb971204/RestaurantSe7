@@ -7,7 +7,7 @@ public class Booking {
 	private int ageOver;
 	private int ageUnder;
 	private int totalPeople;
-	private int tableNumber;
+	private int tableID;
 	private String carNumber;
 	private int notCancel;
 	
@@ -17,11 +17,12 @@ public class Booking {
 	public void setCarNumber(String carNumber) {
 		this.carNumber = carNumber;
 	}
-	public int getTableNumber() {
-		return tableNumber;
+	
+	public int getTableID() {
+		return tableID;
 	}
-	public void setTableNumber(int tableNumber) {
-		this.tableNumber = tableNumber;
+	public void setTableID(int tableID) {
+		this.tableID = tableID;
 	}
 	public String getUserPhone() {
 		return userPhone;

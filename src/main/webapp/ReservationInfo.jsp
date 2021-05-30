@@ -2,6 +2,8 @@
 <%@page import="booking.BookingDAO"%>
 <%@page import="user.User"%>
 <%@page import="user.UserDAO"%>
+<%@page import="table.Table"%>
+<%@page import="table.TableDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%
@@ -91,10 +93,13 @@ label {
 
    <jsp:useBean id="bookingDAO" class="booking.BookingDAO" scope="page" />
    <jsp:useBean id="bookings" class="booking.Booking" scope="page" />
+   <jsp:useBean id="tables" class="table.Table" scope="page" />
+   <jsp:useBean id="tableDAO" class="table.TableDAO" scope="page" />
    <jsp:useBean id="userDAO" class="user.UserDAO" scope="page" />
    <%
        User u =  userDAO.getUserInfo(user.getUserID());
        user.setUserName(u.getUserName());
+       
        
        Booking bk = bookingDAO.getReservationInfo(u.getUserID());
        bookings.setUserPhone(bk.getUserPhone());
@@ -105,9 +110,11 @@ label {
        bookings.setAgeOver(bk.getAgeOver());
        bookings.setAgeUnder(bk.getAgeUnder());
        bookings.setTotalPeople(bk.getTotalPeople());
-       bookings.setTableNumber(bk.getTableNumber());
        bookings.setCarNumber(bk.getCarNumber());
        bookings.setNotCancel(bk.getNotCancel());
+       
+       Table t = tableDAO.getTableInfo(bk.getTableID());
+       tables.setTableName(t.getTableName());
     %>
     
    <div class="container">
@@ -177,9 +184,9 @@ label {
 
             <div class="col-13">
                <div class="col-12">
-                  <label for="tableNumber" class="form-label">테이블 번호</label><br /> <input
+                  <label for="tableID" class="form-label">테이블 이름</label><br /> <input
                      type="text" class="form-control"
-                     placeholder=<jsp:getProperty name="bookings" property="tableNumber" />
+                     placeholder="<%=tables.getTableName()%>"
                      name="to" disabled />
                </div>
             </div>

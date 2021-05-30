@@ -57,6 +57,27 @@ public class TableDAO {
       return -1;
    }
    
+   public Table getTableInfo(int tableID) {
+       String sql = "select * from `table` where tableID = ?";
+       try {
+          pstmt = conn.prepareStatement(sql);
+          pstmt.setInt(1, tableID);
+
+          rs = pstmt.executeQuery();
+          if(rs.next()) {
+             Table table = new Table();
+             table.setTableID(rs.getInt(1));
+             table.setTableName(rs.getString(2));
+             table.setTablePeople(rs.getInt(3));
+             table.setTableContent(rs.getString(4));
+             return table;
+          }
+       }catch (Exception e) {
+          e.printStackTrace();
+       }
+       return null;
+    }
+   
    public int deleteTable(int tableID) {
       String sql = "delete from `table` where tableID=?";
       try {

@@ -21,7 +21,13 @@ request.setCharacterEncoding("utf-8");
        PrintWriter script = response.getWriter();
       // 현재 세션 상태를 체크한다
        String userID = null;
-       if(session.getAttribute("userID") != null){
+      if(session.getAttribute("userID") == null){
+    	  script.println("<script>");
+          script.println("alert('로그인이 필요한 기능입니다.')");
+          script.println("location.href='Login.jsp'");
+          script.println("</script>");
+      }
+      else if(session.getAttribute("userID") != null){
           userID = (String)session.getAttribute("userID");
        }
        BookingDAO bookingdao = new BookingDAO();

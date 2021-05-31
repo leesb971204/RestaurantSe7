@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.83.1">
-    <title>Signin Template · Bootstrap v5.0</title>
+    <title>SE Team7 Restaurant Booking System // Login</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
@@ -41,6 +41,10 @@
           font-size: 3.5rem;
         }
       }
+	img:hover{
+   		cursor : pointer;
+	}
+      
     </style>
 
     
@@ -51,8 +55,8 @@
     
 <main class="form-signin">
   <form method="post" action="LoginAction.jsp">
-    <img class="mb-4" src=".\resources\images\seven.svg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Login</h1>
+    <img class="mb-4" src=".\resources\images\seven.svg" onclick="location.href='Main.jsp'" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal" style="color: #FFFFFF;">Login</h1>
 
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" placeholder="아이디" name="userID" maxlength="20">
@@ -67,9 +71,15 @@
     <input type="submit" class="btn btn-warning form-control" value="로그인">
     
     <div>
-    <a href="Join.jsp" style="text-decoration:none; color: #000000;">회원이 아니신가요?</a>
+    <a href="Join.jsp" style="text-decoration:none; color: #FFFFFF;">회원이 아니신가요?</a>
     </div>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    <footer class="mt-auto text-black-50" style=" position:absolute; bottom:0;">
+               <br>
+               <p style="color: #ffffff; text-decorate:none;">
+               <a href="https://github.com/leesb971204/RestaurantSe7.git" class="text-white" style="text-decoration:none;">
+                  소공A+수공 Restaurant Booking System</a>.
+               </p>
+            </footer>
   </form>
 </main>
 

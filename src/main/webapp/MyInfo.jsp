@@ -17,7 +17,7 @@ request.setCharacterEncoding("utf-8");
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.83.1">
-    <title>Signin Template · Bootstrap v5.0</title>
+    <title>SE Team7 Restaurant Booking System // MyInfo</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
@@ -56,7 +56,7 @@ request.setCharacterEncoding("utf-8");
       }
       .col-12{
       display: flex;
-      width: 100%;
+      width: 120%;
       margin: .5rem;
       }
       
@@ -64,6 +64,15 @@ request.setCharacterEncoding("utf-8");
       margin: .5rem;
       width: 30%;
       }
+      #group{
+      width:100%;
+      height:70%;
+      position:relative;
+      right:25%;
+      }
+      img:hover{
+   		cursor : pointer;
+	}
     </style>
 
     <!-- Custom styles for this template -->
@@ -84,59 +93,66 @@ request.setCharacterEncoding("utf-8");
     %>
 <div class="container">
             <div class="py-5 text-center">
-               <img class="d-block mx-auto mb-4" src=".\resources\images\seven.svg" width="150" height="100">
-               <h2>회원 정보 확인</h2>
+               <img class="d-block mx-auto mb-4" src=".\resources\images\seven.svg" onclick="location.href='Main.jsp'" width="150" height="100">
+               <h2 style="color: #ffffff;">회원 정보 확인</h2>
             </div>
             <div class="row g-3">
                <div class="col-sm-6 center-block" style="float: none; margin: 0 auto;">
-                  <h4 class="mb-3">내 정보</h4>
+                  <h4 class="mb-3" style="color: #ffffff;">내 정보</h4>
                   
-                  <div style= "margin-right:55px;">
+                  <div id="group">
                      <div class="col-12" >
-                          <label for="userID" class="form-label">아이디</label>
+                          <label for="userID" class="form-label" style="color: #ffffff;">아이디</label>
                           <input type="text" class="form-control" placeholder = <jsp:getProperty name="users1" property="userID" /> name="userID" disabled/>
                         </div>
                         
                 
                      <div class="col-12">
-                        <label for="userName" class="form-label">이름</label>
+                        <label for="userName" class="form-label" style="color: #ffffff;">이름</label>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userName" /> name="userName" disabled/>
                      </div>
                      
                      <div class="col-12">
-                        <label for="userPhone" class="form-label">전화번호</label>
+                        <label for="userPhone" class="form-label" style="color: #ffffff;">전화번호</label>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userPhone" /> name="userPhone" disabled/>
                      </div>
                      
                   <div class="col-12">
-                        <label for="userGender" class="form-label">성별</label>
+                        <label for="userGender" class="form-label" style="color: #ffffff;">성별</label>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userGender" /> name="userGender" disabled/>
                      </div>
                      
                      <div class="col-12">
-                        <label for="userBirth" class="form-label">생년월일</label><br/>
+                        <label for="userBirth" class="form-label" style="color: #ffffff;">생년월일</label><br/>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userBirth" /> name="userBirth" disabled/>
                      </div>
                      
                      <div class="col-12">
-                        <label for="userEmail" class="form-label">이메일</label><br/>
+                        <label for="userEmail" class="form-label" style="color: #ffffff;">이메일</label><br/>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userEmail" /> name="userEmail" disabled/>
                      </div>
                      
                      <div class="col-12">
-                        <label for="userPoint" class="form-label">포인트</label><br/>
+                        <label for="userPoint" class="form-label" style="color: #ffffff;">포인트</label><br/>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userPoint" /> name="userPoint" disabled/>
                      </div>
                      </div>
                      <br>
                      <div>
-                     <button type="button" class="btn btn-warning" onclick="location.href='Main.jsp'">메인으로</button>
-                     <button type="button" class="btn btn-warning" onclick="location.href='ManageMyInfo.jsp'">내 정보 수정</button>
+                     &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-warning" onclick="location.href='Main.jsp'">메인으로</button>&nbsp;
+                     <button type="button" class="btn btn-warning" onclick="location.href='ManageMyInfo.jsp'">내 정보 수정</button>&nbsp;
                      <button type="button" class="btn btn-warning" onclick="location.href='DeleteConfirm.jsp'">회원탈퇴</button>
                      </div>
                      </div>
                      </div>
                      </div>
+                     <footer class="mt-auto text-black-50" style="position:absolute; bottom:0; left:0; right:0;">
+               			<br>
+               			<p style="color: #ffffff; text-decorate:none;">
+               			<a href="https://github.com/leesb971204/RestaurantSe7.git" class="text-white" style="text-decoration:none;">
+                  		소공A+수공 Restaurant Booking System</a>.
+               			</p>
+            		</footer>
 
   </body>
 </html>

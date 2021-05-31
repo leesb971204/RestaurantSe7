@@ -49,6 +49,9 @@
           font-size: 3.5rem;
         }
       }
+      .navbar{
+      background-color:rgba(0, 0, 0, 0.3);
+      }
     </style>
 
     
@@ -57,7 +60,7 @@
   </head>
   <body>
  
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="Main.jsp" style="color: #FFFFFF; font-weight:bold;"><img src="./resources/images/seven.svg" style="position:relative; bottom:2px; width: 27px; margin-left: 5px;"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +69,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color: #FFFFFF; font-weight:bold;">소개</a>
+          <a class="nav-link" href="AboutUs.jsp" style="color: #FFFFFF; font-weight:bold;">소개</a>
         </li>
 
           <li class="nav-item dropdown">
@@ -91,8 +94,10 @@
                   <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF; font-weight:bold;">예약</a>
                      <ul class="dropdown-menu" aria-labelledby="dropdown01">
                           <li><a class="dropdown-item" href="BookingConfirm.jsp">예약하기</a></li>
+                          <li><hr class="dropdown-divider" /></li>
                           <li><a class="dropdown-item" href="ReservationConfirm.jsp" >예약정보 확인</a></li>
-                          <li><a class="dropdown-item" href="#">예약 수정</a></li>
+                          <li><a class="dropdown-item" href="ManageReservation.jsp">예약 수정</a></li>
+                          <li><hr class="dropdown-divider" /></li>
                           <li><a class="dropdown-item" href="ReservationConfirm.jsp">예약 취소</a></li>
                      </ul>
                   <%

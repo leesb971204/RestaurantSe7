@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.83.1">
-    <title>Signin Template · Bootstrap v5.0</title>
+    <title>SE Team7 Restaurant Booking System // Booking</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
@@ -61,7 +61,13 @@
       #checkboxtext {
       text-align: left;
       }
-      
+      div.button{
+   		margin: auto;
+   		width: 30%;
+	}
+	img:hover{
+   		cursor : pointer;
+	}
     </style>
 
     
@@ -107,25 +113,24 @@
 <div class="container">
          <form method="post" action="BookingAction.jsp">
             <div class="py-5 text-center">
-               <img class="d-block mx-auto mb-4" src=".\resources\images\seven.svg" width="150" height="100">
-               <h2>예약하기</h2>
+               <img class="d-block mx-auto mb-4" src=".\resources\images\seven.svg"  onclick="location.href='Main.jsp'" width="150" height="100">
+               <h2 style="color: #ffffff;">예약하기</h2>
             </div>
             <div class="row g-3">
-               <div class="col-sm-6 center-block" style="float: none; margin: 0 auto;">
-                  <h4 class="mb-3">예약</h4>
+               <div class="col-sm-6 center-block" style="float: none; margin: 0 auto;">  
                   <div class="row g-3">
                      <div class="col-sm-12">
                         <div class="col-12">
                         </div>
                      </div>
                      <div class="col-12">
-                        <label for="bookingDateTime" class="form-label">예약 날짜 및 시간</label>
+                        <label for="bookingDateTime" class="form-label" style="color: #ffffff;">예약 날짜 및 시간</label>
                         <input type="datetime-local" id='currentDateTime' class="form-control" 
                         min= 'currentDateTime' placeholder="날짜 시간" name="bookingDateTime">      
                      </div>
                      
                      <div class="col-md-6">              
-                     <label for="ageOver" class="form-label">대인</label>
+                     <label for="ageOver" class="form-label" style="color: #ffffff;">대인</label>
                         <select name="ageOver" class="form-select">
                         <option value='0' selected="selected">0</option>
                     <option value='1'>1</option>
@@ -140,7 +145,7 @@
                     </div>
                     
                     <div class="col-md-6">   
-                        <label for="ageUnder" class="form-label" >소인</label>
+                        <label for="ageUnder" class="form-label" style="color: #ffffff;">소인</label>
                         <select name="ageUnder" class="form-select">
                         <option value='0' selected="selected">0</option>
                     <option value='1'>1</option>
@@ -163,18 +168,24 @@
                       </div>
                       
                       <div class="col-12">
-                        <label for="carNumber" class="form-label">차 번호 입력</label>
+                        <label for="carNumber" class="form-label" style="color: #ffffff;">차 번호 입력</label>
                         <input type="text" class="form-control" name="carNumber" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">      
                      </div>
                      
                      
                      &nbsp;<div class="form-check" id="checkboxtext">
                     &nbsp;<input class="form-check-input" name="notCancel" type="checkbox" value="1" id="input_check" />
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault" style="color: #ffffff;">
                       No-show 방지 예약으로 10%할인 혜택을 받으시겠습니까?
                     </label>
                     </div>
-                    
+                    <div class="button">
+              		 <br>
+                     <input type="submit" class="btn btn-warning form-control" value="예약하기">
+                     </div>
+                     </div>
+                     </div>
+                     </div>
                     
                     <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
                     <script>
@@ -208,11 +219,15 @@
                        });
                </script>
                
-                     <input type="submit" class="btn btn-warning form-control" value="예약하기">
-                     </div>
-                     </div>
-                     </div>
+               
 </form>
 </div>
+<footer class="mt-auto text-black-50" style="position:absolute; bottom:0; left:0; right:0;">
+               			<br>
+               			<p style="color: #ffffff; text-decorate:none;">
+               			<a href="https://github.com/leesb971204/RestaurantSe7.git" class="text-white" style="text-decoration:none;">
+                  		소공A+수공 Restaurant Booking System</a>.
+               			</p>
+            		</footer>
   </body>
 </html>

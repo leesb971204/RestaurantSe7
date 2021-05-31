@@ -20,7 +20,7 @@ request.setCharacterEncoding("utf-8");
 <meta name="author"
    content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.83.1">
-<title>Signin Template · Bootstrap v5.0</title>
+<title>SE Team7 Restaurant Booking System // ReservationInfo</title>
 
 <link rel="canonical"
    href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
@@ -83,6 +83,9 @@ label {
 .btn {
    height: 40px;
 }
+img:hover{
+   cursor : pointer;
+}
 </style>
 
 <!-- Custom styles for this template -->
@@ -119,18 +122,17 @@ label {
     
    <div class="container">
       <div class="py-5 text-center">
-         <img class="d-block mx-auto mb-4" src=".\resources\images\seven.svg"
-            width="150" height="100">
-         <h2>예약 정보 확인</h2>
+         <img class="d-block mx-auto mb-4" src=".\resources\images\seven.svg" onclick="location.href='Main.jsp'" width="150" height="100">
+         <h2 style="color: #ffffff;">예약 정보 확인</h2>
       </div>
       <div class="row g-3">
          <div class="col-sm-6 center-block"
             style="float: none; margin: 0 auto;">
-            <h4 class="mb-3">예약 정보</h4>
+            <h4 class="mb-3" style="color: #ffffff;">예약 정보</h4>
 
             <div class="col-13">
                <div class="col-12">
-                  <label for="userName" class="form-label">예약자</label> <input
+                  <label for="userName" class="form-label" style="color: #ffffff;">예약자</label> <input
                      type="text" class="form-control"
                      placeholder=<jsp:getProperty name="user" property="userName" />
                      disabled />
@@ -139,7 +141,7 @@ label {
 
             <div class="col-13">
                <div class="col-12">
-                  <label for="userPhone" class="form-label">전화번호</label> <input
+                  <label for="userPhone" class="form-label" style="color: #ffffff;">전화번호</label> <input
                      type="text" class="form-control"
                      placeholder=<jsp:getProperty name="bookings" property="userPhone" />
                      disabled />
@@ -148,7 +150,7 @@ label {
 
             <div class="col-13">
                <div class="col-12">
-                  <label for="bookingDateTime" class="form-label">예약날짜</label>
+                  <label for="bookingDateTime" class="form-label" style="color: #ffffff;">예약날짜</label>
                   <input type="text" class="form-control"
                      placeholder="<%=dateTime%>"   
                      name="Date" disabled />
@@ -157,7 +159,7 @@ label {
 
             <div class="col-13">
                <div class="col-12">
-                  <label for="ageOver" class="form-label">대인</label> <input
+                  <label for="ageOver" class="form-label" style="color: #ffffff;">대인</label> <input
                      type="text" class="form-control"
                      placeholder=<jsp:getProperty name="bookings" property="ageOver" />
                      name="ageOver" disabled />
@@ -166,7 +168,7 @@ label {
 
             <div class="col-13">
                <div class="col-12">
-                  <label for="ageUnder" class="form-label">소인</label><br /> <input
+                  <label for="ageUnder" class="form-label" style="color: #ffffff;">소인</label><br /> <input
                      type="text" class="form-control"
                      placeholder=<jsp:getProperty name="bookings" property="ageUnder" />
                      name="ageUnder" disabled />
@@ -175,7 +177,7 @@ label {
 
             <div class="col-13">
                <div class="col-12">
-                  <label for="totalPeople" class="form-label">총 인원</label><br /> <input
+                  <label for="totalPeople" class="form-label" style="color: #ffffff;">총 인원</label><br /> <input
                      type="text" class="form-control"
                      placeholder=<jsp:getProperty name="bookings" property="totalPeople" />
                      name="to" disabled />
@@ -184,7 +186,7 @@ label {
 
             <div class="col-13">
                <div class="col-12">
-                  <label for="tableID" class="form-label">테이블 이름</label><br /> <input
+                  <label for="tableID" class="form-label" style="color: #ffffff;">테이블 이름</label><br /> <input
                      type="text" class="form-control"
                      placeholder="<%=tables.getTableName()%>"
                      name="to" disabled />
@@ -194,7 +196,7 @@ label {
 
             <div class="col-13">
                <div class="col-12">
-                  <label for="carNumber" class="form-label">자차 이용</label><br />
+                  <label for="carNumber" class="form-label" style="color: #ffffff;">자차 이용</label><br />
                   <%
                      if(bk.getCarNumber()!=null){
                         %>
@@ -232,7 +234,7 @@ label {
                    
                   <div class="col-13">
                <div class="col-12">
-                  <label for="notCancel" class="form-label">예약 타입</label>
+                  <label for="notCancel" class="form-label" style="color: #ffffff;">예약 타입</label>
                   <%
                      if(bk.getNotCancel() == 1){
                         %>
@@ -272,16 +274,14 @@ label {
                <div class="modal-dialog">
                   <div class="modal-content">
                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">주차권</h5>
+                        <h5 class="modal-title" id="exampleModalLabel"><img class="mb-1" src=".\resources\images\seven.svg" alt="" width="31" height="25">주차권</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                            aria-label="Close"></button>
                      </div>
                      <div class="modal-body">
                         <input type="text" class="form-control"
-                           placeholder=<jsp:getProperty name="bookings" property="carNumber" />
-                           name="to" disabled /><br> 주차장 이용 가능 시간<br> 예약 시간으로부터
-                        1시간
-
+                           placeholder="차량 번호 : <jsp:getProperty name="bookings" property="carNumber" />"
+                           name="to" disabled /><img src=".\resources\images\qrcode.png" style="margin-top:15px;">
                      </div>
                      <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
@@ -296,15 +296,16 @@ label {
                <div class="modal-dialog">
                   <div class="modal-content">
                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">쿠폰</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">No-Show 방지 예약 10% 할인 쿠폰</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                            aria-label="Close"></button>
                      </div>
                      <div class="modal-body">
-                        <input type="text" class="form-control"
-                           placeholder="No-Show 방지 예약 10% 할인 쿠폰" name="to" disabled />
+                        <img src=".\resources\images\qrcode.png" style="margin-top:15px;">
+                        <p style="margin-top : 25px; margin-bottom : 0;">유의사항 : 사용 기간은 발급일로 부터 3개월</p>
                      </div>
                      <div class="modal-footer">
+                     <p style="margin-right:60px;">※ 이 쿠폰은 예약 취소 시 자동으로 사라집니다.</p>
                         <button type="button" class="btn btn-secondary"
                            data-bs-dismiss="modal">닫기</button>
                      </div>
@@ -340,6 +341,13 @@ label {
          </div>
       </div>
    </div>
+   <footer class="mt-auto text-black-50" style="position:absolute; bottom:0; left:0; right:0;">
+        <br>
+        <p style="color: #ffffff; text-decorate:none;">
+        <a href="https://github.com/leesb971204/RestaurantSe7.git" class="text-white" style="text-decoration:none;">
+        소공A+수공 Restaurant Booking System</a>.
+        </p>
+        </footer>
    <script src=".\resources\js\bootstrap.bundle.min.js"></script>
 </body>
 </html>

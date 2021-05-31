@@ -44,7 +44,8 @@ request.setCharacterEncoding("utf-8");
 
 <title>Insert title here</title>
 <!-- Custom styles for this template -->
-
+   <link href="dashboard.css" rel="stylesheet">
+    <link href="css/bootstrap.css">
 </head>
 <body>
 

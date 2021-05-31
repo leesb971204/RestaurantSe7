@@ -5,6 +5,7 @@
 <%@page import="booking.Booking"%>
 <%@page import="user.UserDAO"%>
 <%@page import="user.User" %>
+<%@page import="waiting.WaitingDAO"%>
 <%@page import="table.Table" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -20,6 +21,7 @@
 <jsp:setProperty name="booking" property="carNumber" />
 <jsp:setProperty name="booking" property="tableID" />
 <jsp:setProperty name="booking" property="notCancel" />
+                       
 
 <!DOCTYPE html>
 <html>
@@ -40,11 +42,10 @@
        users1.setUserEmail(userex.getUserEmail());
        users1.setUserPoint(userex.getUserPoint());
     %>
-    
-
+   
    <%
        String userID = null;
-   	  //String userPhone=null;
+        //String userPhone=null;
       if(session.getAttribute("userID") != null){
          userID = (String)session.getAttribute("userID");
          //userPhone = (String)session.getAttribute("userPhone");
@@ -52,24 +53,27 @@
       
       BookingDAO bookingDAO = new BookingDAO();
       TableDAO tableDAO = new TableDAO();
+      WaitingDAO waitingDAO = new WaitingDAO();
       //테이블 자동배정
       int tableID = -1;
       int totalPeople = booking.getAgeOver() + booking.getAgeUnder();
       ArrayList<Table> myTableID = bookingDAO.getMyTable(totalPeople);
       for (Table table: myTableID) {
-    	  if(bookingDAO.getUsableTable(booking.getBookingDateTime(), table.getTableID()) == -1) {
-    		  continue;
-    	  } else {
-    		  tableID = table.getTableID();
-    		  break;
-    	  }
+         if(bookingDAO.getUsableTable(booking.getBookingDateTime(), table.getTableID()) == -1) {
+            continue;
+         } else {
+            tableID = table.getTableID();
+            break;
+         }
       }
       
       if(tableID == -1) {
-    	  PrintWriter script = response.getWriter();
+         PrintWriter script = response.getWriter();
+         waitingDAO.reservationWaiting(userID, users1.getUserPhone(), booking.getBookingDateTime(), booking.getAgeOver(), booking.getAgeUnder(), booking.getTableID(), booking.getCarNumber(), booking.getNotCancel(), waitingDAO.priority());
           script.println("<script>");
           script.println("alert('이 시간에 예약 가능한 테이블이 없습니다.')");
-          script.println("history.back()");
+          script.println("alert('대기리스트에 추가되었습니다.')");
+          script.println("location.href='Main.jsp'");
           script.println("</script>");
       }
       booking.setTableID(tableID);

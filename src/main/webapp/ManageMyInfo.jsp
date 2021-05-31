@@ -16,7 +16,7 @@ request.setCharacterEncoding("utf-8");
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.83.1">
-    <title>Signin Template · Bootstrap v5.0</title>
+    <title>SE Team7 Restaurant Booking System // ManageMyInfo</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
@@ -56,7 +56,7 @@ request.setCharacterEncoding("utf-8");
       
       .col-12 {
          display: flex;
-       width: 80%;
+       width: 90%;
        margin: .5rem;
        margin-top: 0px;
       }
@@ -68,16 +68,25 @@ request.setCharacterEncoding("utf-8");
       
       label {
          margin: .5rem;
-         width: 30%;
+         width: 40%;
       }
       
       .btn {
          height: 40px;
       }
+      #group{
+      width:100%;
+      height:70%;
+      position:relative;
+      right:5%;
+      }
+      img:hover{
+   		cursor : pointer;
+		}
     </style>
 
     <!-- Custom styles for this template -->
-    <link href=".\resources\css\signin.css" rel="stylesheet">
+<link href=".\resources\css\signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
     <jsp:useBean id="users" class="user.UserDAO" scope="page" />
@@ -94,15 +103,16 @@ request.setCharacterEncoding("utf-8");
     %>
 <div class="container">
             <div class="py-5 text-center">
-               <img class="d-block mx-auto mb-4" src=".\resources\images\seven.svg" width="150" height="100">
-               <h2>회원 정보 수정</h2>
+               <img class="d-block mx-auto mb-4" src=".\resources\images\seven.svg" onclick="location.href='Main.jsp'" width="150" height="100">
+               <h2 style="color: #ffffff;">회원 정보 수정</h2>
             </div>
-            <div class="row g-3">
+            <div class="row g-3" >
                <div class="col-sm-6 center-block" style="float: none; margin: 0 auto;">
-                  <h4 class="mb-3">내 정보</h4>
+                  <h4 class="mb-3" style="color: #ffffff;">내 정보</h4>
+                  <div id="group">
                    <div class="col-13">
                    <div class="col-12">
-                        <label for="userID" class="form-label">아이디</label>
+                        <label for="userID" class="form-label" style="color: #ffffff;">아이디</label>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userID" /> name="userID" disabled>
                         </div>
                         </div>
@@ -110,16 +120,16 @@ request.setCharacterEncoding("utf-8");
                      <form action="ManageAction.jsp">
                      <div class="col-13">
                      <div class="col-12">
-                        <label for="userPassword" class="form-label">비밀번호</label>
+                        <label for="userPassword" class="form-label" style="color: #ffffff;">비밀번호</label>
                         <input type="Password" class="form-control" name="userPassword">      
                      </div>
-                     <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userPassword" >
+                     <input type="submit" class="btn btn-outline-light form-control" value="수정" name="userPassword" >
                      </div>
                        </form>
                    
                        <div class="col-13">
                      <div class="col-12">
-                        <label for="userPassword" class="form-label">비밀번호확인</label>
+                        <label for="userPassword" class="form-label" style="color: #ffffff;">비밀번호확인</label>
                         <input type="Password" class="form-control" name="userPassword">      
                      </div>
                      </div>
@@ -127,33 +137,33 @@ request.setCharacterEncoding("utf-8");
                      <form action="ManageAction.jsp">
                      <div class="col-13">
                      <div class="col-12">
-                        <label for="userName" class="form-label">이름</label>
+                        <label for="userName" class="form-label" style="color: #ffffff;">이름</label>
                         <input type="text" class="form-control" name="userName">      
                      </div>
-                     <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userName">
+                     <input type="submit" class="btn btn-outline-light form-control" value="수정" name="userName">
                      </div>
                      </form>
                      
                      <form action="ManageAction.jsp">
                      <div class="col-13">
                      <div class="col-12">
-                        <label for="userPhone" class="form-label">전화번호</label>
+                        <label for="userPhone" class="form-label" style="color: #ffffff;">전화번호</label>
                         <input type="text" class="form-control" name="userPhone">      
                      </div>
-                     <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userPhone">
+                     <input type="submit" class="btn btn-outline-light form-control" value="수정" name="userPhone">
                      </div>
                      </form>
                      
                   <div class="col-13">   
                   <div class="col-12">
-                        <label for="userGender" class="form-label">성별</label>
+                        <label for="userGender" class="form-label" style="color: #ffffff;">성별</label>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userGender" /> name="userGender" disabled>  
                      </div>
                      </div>
                      
                      <div class="col-13">
                      <div class="col-12">
-                        <label for="userBirth" class="form-label">생년월일</label><br/>
+                        <label for="userBirth" class="form-label" style="color: #ffffff;">생년월일</label><br/>
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userBirth" /> name="userBirth" disabled>      
                      </div>
                      </div>
@@ -161,20 +171,27 @@ request.setCharacterEncoding("utf-8");
                      <form action="ManageAction.jsp">
                      <div class="col-13">
                      <div class="col-12">
-                        <label for="userEmail" class="form-label">이메일</label><br/>
+                        <label for="userEmail" class="form-label" style="color: #ffffff;">이메일</label><br/>
                         <input type="email" class="form-control" name="userEmail">      
                      </div>
-                     <input type="submit" class="btn btn-outline-secondary form-control" value="수정" name="userEmail">
+                     <input type="submit" class="btn btn-outline-light form-control" value="수정" name="userEmail">
                      </div>
                      </form>
                      
-                     <br>
+                     <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                      <button type="button" class="btn btn-warning" onclick="location.href='Main.jsp'">메인으로</button>
+                     </div>
+                     </div>
                      
                      </div>
-                     
                      </div>
-                     </div>
+                     <footer class="mt-auto text-black-50" style="position:absolute; bottom:0; left:0; right:0;">
+               			<br>
+               			<p style="color: #ffffff; text-decorate:none;">
+               			<a href="https://github.com/leesb971204/RestaurantSe7.git" class="text-white" style="text-decoration:none;">
+                  		소공A+수공 Restaurant Booking System</a>.
+               			</p>
+            		</footer>
 
   </body>
 </html>

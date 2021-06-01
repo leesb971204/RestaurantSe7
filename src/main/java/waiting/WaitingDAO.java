@@ -18,7 +18,7 @@ public class WaitingDAO {
       try {
          String dbURL = "jdbc:mariadb://localhost:3306/se7";
          String dbID = "root";
-         String dbPassword = "1234";
+         String dbPassword = "Joonhoo1!";
          Class.forName("org.mariadb.jdbc.Driver");
          conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
       } catch (Exception e) {
@@ -163,4 +163,52 @@ public class WaitingDAO {
          }
          return -1;
       }
+   
+   public int cancelWaiting(String userID) {
+      String sql = "delete from waiting where userID=?";
+
+      try {
+         pstmt = conn.prepareStatement(sql);
+         pstmt.setString(1, userID);
+         return pstmt.executeUpdate();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      return -1;
+   }
+   
+   public int autoDeleteWaiting() {
+      String sql = "delete from waiting where bookingDateTime < NOW() + INTERVAL 1 DAY;";
+
+      try {
+         pstmt = conn.prepareStatement(sql);
+         rs = pstmt.executeQuery();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      return 0;
+   }
+   
+   public ArrayList<Waiting> getWaitingListAll(){
+       ArrayList<Waiting> list = new ArrayList<Waiting>();
+       try {
+       String sql = "select * from waiting order by bookingDateTime, totalPeople";
+       pstmt = conn.prepareStatement(sql);
+       rs = pstmt.executeQuery();
+
+       while(rs.next()){
+          Waiting waiting =  new Waiting();
+          waiting.setUserID(rs.getString(1));
+          waiting.setUserPhone(rs.getString(2));
+          waiting.setBookingDateTime(rs.getString(3));
+          waiting.setAgeOver(rs.getInt(4));
+          waiting.setAgeUnder(rs.getInt(5));
+          list.add(waiting);
+       }
+       }catch(Exception e){
+       e.printStackTrace();
+    }
+       return list;
+    }
+
 }

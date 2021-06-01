@@ -40,10 +40,8 @@
    
    <%
        String userID = null;
-        //String userPhone=null;
       if(session.getAttribute("userID") != null){
          userID = (String)session.getAttribute("userID");
-         //userPhone = (String)session.getAttribute("userPhone");
       }
       
       BookingDAO bookingDAO = new BookingDAO();
@@ -63,11 +61,10 @@
       }
       
       if(tableID == -1) {
-         PrintWriter script = response.getWriter();
-         waitingDAO.reservationWaiting(userID, users1.getUserPhone(), booking.getBookingDateTime(), booking.getAgeOver(), booking.getAgeUnder(), booking.getTableID(), booking.getCarNumber(), booking.getNotCancel(), waitingDAO.priority());
-         bookingDAO.cancel(users1.getUserPoint(), userID);
-         bookingDAO.pointUpdate(users1.getUserPoint(), userID);
-         script.println("<script>");
+          PrintWriter script = response.getWriter();
+          waitingDAO.reservationWaiting(userID, users1.getUserPhone(), booking.getBookingDateTime(), booking.getAgeOver(), booking.getAgeUnder(), booking.getTableID(), booking.getCarNumber(), booking.getNotCancel(), waitingDAO.priority());
+          bookingDAO.cancel(users1.getUserPoint(), userID);
+          script.println("<script>");
           script.println("alert('변경하신 시간에 예약 가능한 테이블이 없습니다.')");
           script.println("alert('대기리스트에 추가되었습니다.')");
           script.println("location.href='Main.jsp'");

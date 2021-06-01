@@ -317,20 +317,9 @@ img:hover{
                
                
                
-           <%
-                  if(wt.getNotCancel() == 1){
-                      %>
                <button type="button" class="btn btn-warning"
-               onclick="location.href='NotCancelConfirm.jsp'">대기 취소</button>
-               <%
-                     }
-                  if(wt.getNotCancel() == 0){
-                     %>
-               <button type="button" class="btn btn-warning"
-               onclick="location.href='CancelConfirm.jsp'">대기 취소</button>
-               <%
-                  }
-                  %>
+               onclick="location.href='CancelWaitingConfirm.jsp'">대기 취소</button>
+
                       
                       
 

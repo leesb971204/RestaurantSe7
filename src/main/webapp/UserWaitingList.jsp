@@ -49,25 +49,27 @@ request.setCharacterEncoding("utf-8");
     </style>
 
 <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
+    <link href=".\resources\css\signin.css" rel="stylesheet">
     <link href="css/bootstrap.css">
 </head>
 <body>
 
-<div class="container-fluid" style = "padding : 100px;">
+<div class="container-fluid" style = "padding : 100px; margin-bottom:20%;">
 <div class="row">
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style = "margin-right : 111px;">
-   <h2>예약 대기리스트 명단</h2>
+   <h2 style="color: #ffffff;">예약 대기리스트 명단</h2>
+   <br>
+   <h8 style="color:#ffffff;">이 명단은 총원이 적은 순, 날짜가 빠른 순으로 정렬되어 있습니다.</h8>
+   <br>
    <br>
    <div class="table-responsive">
       <table class="table">
          <thead>
             <tr>
-               <th width = "10%" style = "background-color:#dcdcdc;">#</th>
-               <th width = "20%" style = "background-color:#dcdcdc;">이름</th>
-               <th width = "25%" style = "background-color:#dcdcdc;">전화번호</th>
-               <th width = "30%" style = "background-color:#dcdcdc;">예약시간</th>
-               <th width = "15%" style = "background-color:#dcdcdc;">총원</th>
+               <th width = "15%" class="bg-warning">#</th>
+               <th width = "25%" class="bg-warning">아이디</th>
+               <th width = "35%" class="bg-warning">예약시간</th>
+               <th width = "25%" class="bg-warning">총원</th>
             </tr>
          </thead>
          <%
@@ -76,17 +78,13 @@ request.setCharacterEncoding("utf-8");
       
       int i = 1;
       for(Waiting wait : list){
-         User u = new User();
-         u = userdao.getUserInfo(wait.getUserID());
-         System.out.println(u.getUserName());
       %>
          <tbody>
             <tr>
-               <td><%=i++%></td>
-               <td><%=u.getUserName() %></td>
-               <td><%=wait.getUserPhone() %></td>
-               <td><%=wait.getBookingDateTime().substring(0, 16)%></td>
-               <td><%=wait.getTotalPeople() %></td>
+               <td style="color: #ffffff;"><%=i++%></td>
+               <td style="color: #ffffff;"><%=wait.getUserID()%></td>
+               <td style="color: #ffffff;"><%=wait.getBookingDateTime().substring(0, 16)%></td>
+               <td style="color: #ffffff;"><%=wait.getTotalPeople() %></td>
             </tr>
             <%
       }

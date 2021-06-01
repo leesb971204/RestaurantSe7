@@ -1,6 +1,7 @@
 <%@page import="java.io.PrintWriter"%>
 <%@page import="user.UserDAO"%>
 <%@page import="booking.BookingDAO"%>
+<%@page import="waiting.WaitingDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -35,6 +36,7 @@ request.setCharacterEncoding("utf-8");
       }
       UserDAO userDAO = new UserDAO();
       BookingDAO bookingDAO = new BookingDAO();
+      WaitingDAO waitingDAO = new WaitingDAO();
       int result = userDAO.login(user1.getUserID(), user1.getUserPassword());
       if(result == 1){
          // 로그인에 성공하면 세션을 부여
@@ -51,6 +53,8 @@ request.setCharacterEncoding("utf-8");
          user.setUserID(user1.getUserID());
          user.setUserPassword(user1.getUserPassword());
          bookingDAO.autoDelete();
+         waitingDAO.autoDeleteWaiting();
+         
          script.println("location.href='Main.jsp'");
          script.println("</script>");
       }

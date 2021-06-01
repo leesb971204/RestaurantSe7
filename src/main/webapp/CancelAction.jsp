@@ -44,6 +44,7 @@ request.setCharacterEncoding("utf-8");
       userID = (String) session.getAttribute("userID");
    }
 
+   UserDAO userdao = new UserDAO();
    BookingDAO bookingdao = new BookingDAO();
    WaitingDAO waitingdao = new WaitingDAO();
    TableDAO tabledao = new TableDAO();
@@ -75,6 +76,8 @@ request.setCharacterEncoding("utf-8");
       if (ableWaiting != null) { //추가 가능한 대기자가 있으면
          int added = bookingdao.reservation(ableWaiting.getUserID(), ableWaiting.getUserPhone(), ableWaiting.getBookingDateTime(), ableWaiting.getAgeOver(), ableWaiting.getAgeUnder(), cancel.getTableID(), ableWaiting.getCarNumber(), ableWaiting.getNotCancel());
          if (added != -1) { //정상적으로 추가되었다면
+        	User u = userdao.getUserInfo(ableWaiting.getUserID());
+            bookingdao.pointUpdate(u.getUserPoint(),u.getUserID());
             waitingdao.deleteWaiting(ableWaiting.getPriority());
          }
       }

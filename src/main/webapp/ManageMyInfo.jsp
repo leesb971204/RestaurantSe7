@@ -5,6 +5,7 @@
 <%
 request.setCharacterEncoding("utf-8");
 %>
+
 <jsp:useBean id="user" class="user.User" scope="session" />
 <jsp:setProperty name="user" property="userID" />
 
@@ -22,7 +23,7 @@ request.setCharacterEncoding("utf-8");
 
     
 
-    <!-- Bootstrap core CSS -->
+<!-- Bootstrap core CSS -->
 <link href=".\\resources\\css\\bootstrap.min.css" rel="stylesheet">
 
     <!-- Favicons -->
@@ -81,8 +82,8 @@ request.setCharacterEncoding("utf-8");
       right:5%;
       }
       img:hover{
-   		cursor : pointer;
-		}
+         cursor : pointer;
+      }
     </style>
 
     <!-- Custom styles for this template -->
@@ -101,6 +102,20 @@ request.setCharacterEncoding("utf-8");
        users1.setUserBirth(userex.getUserBirth());
        users1.setUserEmail(userex.getUserEmail());
     %>
+    
+    <script>
+    function noSpaceForm(obj) 
+                     {             
+                         var str_space = /\s/;               // 공백 체크
+                         if(str_space.exec(obj.value)) 
+                         {     // 공백 체크
+                             obj.focus();
+                             obj.value = obj.value.replace(' ',''); // 공백제거
+                             return false;
+                         }
+                     }
+    </script>
+    
 <div class="container">
             <div class="py-5 text-center">
                <img class="d-block mx-auto mb-4" src=".\resources\images\seven.svg" onclick="location.href='Main.jsp'" width="150" height="100">
@@ -116,23 +131,54 @@ request.setCharacterEncoding("utf-8");
                         <input type="text" class="form-control" placeholder=<jsp:getProperty name="users1" property="userID" /> name="userID" disabled>
                         </div>
                         </div>
+                    <script>
+                     function check(){
+                        if(myform.userPassword.value == ""){
+                           alert("비밀번호를 입력해주세요");
+                           myform.userPassword.focus();
+                           return false;
+                        }
+                        else if(myform.userPassword.value.length<8){
+                           alert("비밀번호를 8자 이상 입력해주세요.");
+                           myform.userPassword.focus();
+                           return false;
+                        }
+                        else if(myform.userPasswordCheck.value == ""){
+                           alert("비밀번호 확인을 입력해주세요");
+                           myform.userPassword.focus();
+                           return false;
+                        }
+                        else if(myform.userPassword.value != myform.userPasswordCheck.value){
+                           alert("비밀번호가 일치하지 않습니다.");
+                           myform.userPasswordCheck.focus();
+                           return false;
+                        }
+                        
+                        else{
+                           return true;
+                        }
+                     }
+                     </script>
+                    
                      
-                     <form action="ManageAction.jsp">
+                     <form name="myform" action="ManageAction.jsp" onsubmit="return check()">
                      <div class="col-13">
-                     <div class="col-12">
-                        <label for="userPassword" class="form-label" style="color: #ffffff;">비밀번호</label>
-                        <input type="Password" class="form-control" name="userPassword">      
-                     </div>
-                     <input type="submit" class="btn btn-outline-light form-control" value="수정" name="userPassword" >
-                     </div>
-                       </form>
+                        <div class="col-12">
+                     <label for="userPassword" class="form-label" style="color: #ffffff;">비밀번호</label>
+                           <input type="Password" class="form-control" name="userPassword" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">      
+                        </div>
+                        <input type="submit" class="btn btn-outline-light form-control" value="수정">
+                    </div>
+
+                    <div class="col-13">
+                        <div class="col-12">
+                           <label for="userPasswordCheck" class="form-label" style="color: #ffffff;" onkeyup="noSpaceForm(this);" >비밀번호 확인</label>
+                           <input type="Password" class="form-control" name="userPasswordCheck" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">
+                        </div>
+                    </div>
+                     </form>
                    
-                       <div class="col-13">
-                     <div class="col-12">
-                        <label for="userPassword" class="form-label" style="color: #ffffff;">비밀번호확인</label>
-                        <input type="Password" class="form-control" name="userPassword">      
-                     </div>
-                     </div>
+                                      
                      
                      <form action="ManageAction.jsp">
                      <div class="col-13">
@@ -186,12 +232,12 @@ request.setCharacterEncoding("utf-8");
                      </div>
                      </div>
                      <footer class="mt-auto text-black-50" style="position:absolute; bottom:0; left:0; right:0;">
-               			<br>
-               			<p style="color: #ffffff; text-decorate:none;">
-               			<a href="https://github.com/leesb971204/RestaurantSe7.git" class="text-white" style="text-decoration:none;">
-                  		소공A+수공 Restaurant Booking System</a>.
-               			</p>
-            		</footer>
+                        <br>
+                        <p style="color: #ffffff; text-decorate:none;">
+                        <a href="https://github.com/leesb971204/RestaurantSe7.git" class="text-white" style="text-decoration:none;">
+                        소공A+수공 Restaurant Booking System</a>.
+                        </p>
+                  </footer>
 
   </body>
 </html>

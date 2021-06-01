@@ -25,7 +25,6 @@ request.setCharacterEncoding("utf-8");
           userID = (String)session.getAttribute("userID");
        }
        WaitingDAO waitingdao = new WaitingDAO();
-      System.out.print(userID);
        int result = waitingdao.checkWaitingInfo(userID);
        
        //예약정보가 없다면

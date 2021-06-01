@@ -14,10 +14,10 @@ request.setCharacterEncoding("utf-8");
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.79.0">
-    <title>Dashboard Template · Bootstrap v5.0</title>
-    
+    <title>SE Team7 Restaurant Booking System // AdminRInfo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./resources/images/seven.svg">
    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
-
+<link rel="shortcut icon" type="image/x-icon" href="./resources/images/seven.svg">
     <!-- Bootstrap core CSS -->
 <link href=".\\resources\\css\\bootstrap.min.css" rel="stylesheet">
 
@@ -51,18 +51,19 @@ request.setCharacterEncoding("utf-8");
 <div class="container-fluid" style = "padding : 100px;">
   <div class="row">
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style = "margin-right : 111px;">
-   <h2>테스트</h2>
+   <h2>예약자 정보 확인</h2>
+   <br>
    <div class="table-responsive">
-      <table class="table table-striped table-sm">
+      <table class="table">
          <thead>
             <tr>
-               <th width = "5%">#</th>
-               <th width = "10%">이름</th>
-               <th width = "25%">예약 시간</th>
-               <th width = "20%">전화번호</th>
-               <th width = "10%">성인</th>
-               <th width = "10%">어린이</th>
-               <th width = "10%">총원</th>
+               <th width = "5%" style = "background-color:#dcdcdc;">#</th>
+               <th width = "10%" style = "background-color:#dcdcdc;">이름</th>
+               <th width = "25%" style = "background-color:#dcdcdc;">예약 시간</th>
+               <th width = "20%" style = "background-color:#dcdcdc;">전화번호</th>
+               <th width = "10%" style = "background-color:#dcdcdc;">성인</th>
+               <th width = "10%" style = "background-color:#dcdcdc;">어린이</th>
+               <th width = "10%" style = "background-color:#dcdcdc;">총원</th>
             </tr>
          </thead>
          <%

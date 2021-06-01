@@ -1,5 +1,5 @@
-<%@page import="booking.Booking"%>
-<%@page import="booking.BookingDAO"%>
+<%@page import="waiting.Waiting"%>
+<%@page import="waiting.WaitingDAO"%>
 <%@page import="user.User"%>
 <%@page import="user.UserDAO"%>
 <%@page import="table.Table"%>
@@ -20,7 +20,7 @@ request.setCharacterEncoding("utf-8");
 <meta name="author"
    content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.83.1">
-<title>SE Team7 Restaurant Booking System // ReservationInfo</title>
+<title>SE Team7 Restaurant Booking System // WaitingInfo</title>
 
 <link rel="canonical"
    href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
@@ -94,41 +94,37 @@ img:hover{
 <body class="text-center">
 
 
-   <jsp:useBean id="bookingDAO" class="booking.BookingDAO" scope="page" />
-   <jsp:useBean id="bookings" class="booking.Booking" scope="page" />
+   <jsp:useBean id="waitingDAO" class="waiting.WaitingDAO" scope="page" />
+   <jsp:useBean id="waitings" class="waiting.Waiting" scope="page" />
    <jsp:useBean id="tables" class="table.Table" scope="page" />
    <jsp:useBean id="tableDAO" class="table.TableDAO" scope="page" />
    <jsp:useBean id="userDAO" class="user.UserDAO" scope="page" />
    <%
        User u =  userDAO.getUserInfo(user.getUserID());
        user.setUserName(u.getUserName());
+
+       Waiting wt = waitingDAO.getWaitingInfo(u.getUserID());
+       waitings.setUserPhone(wt.getUserPhone());
+       waitings.setBookingDateTime(wt.getBookingDateTime());
        
+       String dateTime = (wt.getBookingDateTime().substring(0, 16));
        
-       Booking bk = bookingDAO.getReservationInfo(u.getUserID());
-       bookings.setUserPhone(bk.getUserPhone());
-       bookings.setBookingDateTime(bk.getBookingDateTime());
-       
-       String dateTime = (bk.getBookingDateTime().substring(0, 16));
-       
-       bookings.setAgeOver(bk.getAgeOver());
-       bookings.setAgeUnder(bk.getAgeUnder());
-       bookings.setTotalPeople(bk.getTotalPeople());
-       bookings.setCarNumber(bk.getCarNumber());
-       bookings.setNotCancel(bk.getNotCancel());
-       
-       Table t = tableDAO.getTableInfo(bk.getTableID());
-       tables.setTableName(t.getTableName());
+       waitings.setAgeOver(wt.getAgeOver());
+       waitings.setAgeUnder(wt.getAgeUnder());
+       waitings.setTotalPeople(wt.getTotalPeople());
+       waitings.setCarNumber(wt.getCarNumber());
+       waitings.setNotCancel(wt.getNotCancel());
     %>
     
    <div class="container">
       <div class="py-5 text-center">
          <img class="d-block mx-auto mb-4" src=".\resources\images\seven.svg" onclick="location.href='Main.jsp'" width="150" height="100">
-         <h2 style="color: #ffffff;">예약 정보 확인</h2>
+         <h2 style="color: #ffffff;">대기 정보 확인</h2>
       </div>
       <div class="row g-3">
          <div class="col-sm-6 center-block"
             style="float: none; margin: 0 auto;">
-            <h4 class="mb-3" style="color: #ffffff;">예약 정보</h4>
+            <h4 class="mb-3" style="color: #ffffff;">대기 정보</h4>
 
             <div class="col-13">
                <div class="col-12">
@@ -143,7 +139,7 @@ img:hover{
                <div class="col-12">
                   <label for="userPhone" class="form-label" style="color: #ffffff;">전화번호</label> <input
                      type="text" class="form-control"
-                     placeholder=<jsp:getProperty name="bookings" property="userPhone" />
+                     placeholder=<jsp:getProperty name="waitings" property="userPhone" />
                      disabled />
                </div>
             </div>
@@ -161,7 +157,7 @@ img:hover{
                <div class="col-12">
                   <label for="ageOver" class="form-label" style="color: #ffffff;">대인</label> <input
                      type="text" class="form-control"
-                     placeholder=<jsp:getProperty name="bookings" property="ageOver" />
+                     placeholder=<jsp:getProperty name="waitings" property="ageOver" />
                      name="ageOver" disabled />
                </div>
             </div>
@@ -170,7 +166,7 @@ img:hover{
                <div class="col-12">
                   <label for="ageUnder" class="form-label" style="color: #ffffff;">소인</label><br /> <input
                      type="text" class="form-control"
-                     placeholder=<jsp:getProperty name="bookings" property="ageUnder" />
+                     placeholder=<jsp:getProperty name="waitings" property="ageUnder" />
                      name="ageUnder" disabled />
                </div>
             </div>
@@ -179,7 +175,7 @@ img:hover{
                <div class="col-12">
                   <label for="totalPeople" class="form-label" style="color: #ffffff;">총 인원</label><br /> <input
                      type="text" class="form-control"
-                     placeholder=<jsp:getProperty name="bookings" property="totalPeople" />
+                     placeholder=<jsp:getProperty name="waitings" property="totalPeople" />
                      name="to" disabled />
                </div>
             </div>
@@ -188,7 +184,7 @@ img:hover{
                <div class="col-12">
                   <label for="tableID" class="form-label" style="color: #ffffff;">테이블 이름</label><br /> <input
                      type="text" class="form-control"
-                     placeholder=<jsp:getProperty name="bookings" property="carNumber" />
+                     placeholder="테이블이 아직 배정되지 않았습니다."
                      name="to" disabled />
                </div>
             </div>
@@ -198,10 +194,10 @@ img:hover{
                <div class="col-12">
                   <label for="carNumber" class="form-label" style="color: #ffffff;">자차 이용</label><br />
                   <%
-                     if(bk.getCarNumber()!=null){
+                     if(wt.getCarNumber()!=null){
                         %>
                   <input type="text" class="form-control"
-                     placeholder=<jsp:getProperty name="bookings" property="carNumber" />
+                     placeholder=<jsp:getProperty name="waitings" property="carNumber" />
                      name="to" disabled />
                   <%
                         }
@@ -216,7 +212,7 @@ img:hover{
               
 
                <%
-                  if(bk.getCarNumber()!=null){
+                  if(wt.getCarNumber()!=null){
                       %>
                <input type="button" class="btn btn-warning" data-bs-toggle="modal"
                   data-bs-target="#exampleModal" value="주차권확인">
@@ -236,12 +232,12 @@ img:hover{
                <div class="col-12">
                   <label for="notCancel" class="form-label" style="color: #ffffff;">예약 타입</label>
                   <%
-                     if(bk.getNotCancel() == 1){
+                     if(wt.getNotCancel() == 1){
                         %>
                   <input type="text" class="form-control" placeholder="No-show 방지 예약" name="to" disabled />
                      <%
                      }
-                     if(bk.getNotCancel() == 0){
+                     if(wt.getNotCancel() == 0){
                      %>
                      <input type="text" class="form-control"placeholder="No-show 방지 예약 사용하지 않음" name="to" disabled />
                      <%
@@ -250,13 +246,13 @@ img:hover{
                </div>
                
                <%
-                  if(bk.getNotCancel() == 1){
+                  if(wt.getNotCancel() == 1){
                       %>
                <input type="button" class="btn btn-warning" data-bs-toggle="modal"
                   data-bs-target="#exampleModal2" value="쿠폰">
                <%
                      }
-                  if(bk.getNotCancel() == 0){
+                  if(wt.getNotCancel() == 0){
                      %>
                <input type="button" class="btn btn-warning" data-bs-toggle="modal"
                   data-bs-target="#exampleModal2" value="쿠폰" disabled>
@@ -280,7 +276,7 @@ img:hover{
                      </div>
                      <div class="modal-body">
                         <input type="text" class="form-control"
-                           placeholder="차량 번호 : <jsp:getProperty name="bookings" property="carNumber" />"
+                           placeholder="차량 번호 : <jsp:getProperty name="waitings" property="carNumber" />"
                            name="to" disabled /><img src=".\resources\images\qrcode.png" style="margin-top:15px;">
                      </div>
                      <div class="modal-footer">
@@ -322,16 +318,16 @@ img:hover{
                
                
            <%
-                  if(bk.getNotCancel() == 1){
+                  if(wt.getNotCancel() == 1){
                       %>
                <button type="button" class="btn btn-warning"
-               onclick="location.href='NotCancelConfirm.jsp'">예약 취소</button>
+               onclick="location.href='NotCancelConfirm.jsp'">대기 취소</button>
                <%
                      }
-                  if(bk.getNotCancel() == 0){
+                  if(wt.getNotCancel() == 0){
                      %>
                <button type="button" class="btn btn-warning"
-               onclick="location.href='CancelConfirm.jsp'">예약 취소</button>
+               onclick="location.href='CancelConfirm.jsp'">대기 취소</button>
                <%
                   }
                   %>

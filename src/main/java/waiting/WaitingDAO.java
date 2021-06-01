@@ -48,6 +48,48 @@ public class WaitingDAO {
       return -1;
    }
    
+   public int checkWaitingInfo(String userID) {
+      String sql = "select * from waiting where userID = ?";
+      try {
+         pstmt = conn.prepareStatement(sql);
+         pstmt.setString(1, userID);
+         rs = pstmt.executeQuery();
+         if (rs.next())
+            return 1;
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      return -1;
+   }
+   
+   public Waiting getWaitingInfo(String userID) {
+      String sql = "select * from waiting where userID = ?";
+      try {
+         pstmt = conn.prepareStatement(sql);
+         pstmt.setString(1, userID);
+
+         rs = pstmt.executeQuery();
+         if (rs.next()) {
+            Waiting w = new Waiting();
+            w.setUserID(rs.getString(1));
+            w.setUserPhone(rs.getString(2));
+            w.setBookingDateTime(rs.getString(3));
+            w.setAgeOver(rs.getInt(4));
+            w.setAgeUnder(rs.getInt(5));
+            w.setTotalPeople(rs.getInt(6));
+            w.setTableID(rs.getInt(7));
+            w.setCarNumber(rs.getString(8));
+            w.setNotCancel(rs.getInt(9));
+            w.setPriority(rs.getInt(10));
+            return w;
+         }
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      return null;
+   }
+
+   
    public int priority() {   
           String sql = "select priority from waiting order by priority desc";
           try {

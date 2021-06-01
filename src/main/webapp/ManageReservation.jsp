@@ -66,7 +66,7 @@ request.setCharacterEncoding("utf-8");
       }
       
       .col-13 {
-         display: flex;
+       display: flex;
        width: 110%;
       }
       
@@ -129,7 +129,6 @@ request.setCharacterEncoding("utf-8");
        User u =  userDAO.getUserInfo(user.getUserID());
        user.setUserName(u.getUserName());
        
-       
        Booking bk = bookingDAO.getReservationInfo(u.getUserID());
        bookings.setUserPhone(bk.getUserPhone());
        bookings.setBookingDateTime(bk.getBookingDateTime());
@@ -154,12 +153,13 @@ request.setCharacterEncoding("utf-8");
                <div class="col-sm-6 center-block" style="float: none; margin: 0 auto;">
                   <h4 class="mb-3" style="color: #ffffff;">예약 정보</h4>
                   <div id="group">
+                  
                   <form action="ManageRAction.jsp">
                    <div class="col-13">
                    <div class="col-12">
                        <label for="userName" class="form-label" style="color: #ffffff;">예약자</label> <input
                      type="text" class="form-control"
-                     placeholder=<jsp:getProperty name="user" property="userName" /> disabled />
+                     placeholder=<jsp:getProperty name="user" property="userName" /> readonly />
                         </div>
                         </div>
                      
@@ -168,7 +168,7 @@ request.setCharacterEncoding("utf-8");
                      <div class="col-12">
                         <label for="userPhone" class="form-label" style="color: #ffffff;">전화번호</label> <input
                      type="text" class="form-control"
-                     placeholder=<jsp:getProperty name="bookings" property="userPhone" /> disabled />      
+                     placeholder=<jsp:getProperty name="bookings" property="userPhone" /> readonly />      
                      </div>
                      </div>
 
@@ -176,10 +176,9 @@ request.setCharacterEncoding("utf-8");
                        <div class="col-13">
                      <div class="col-12">
                         <label for="bookingDateTime" class="form-label" style="color: #ffffff;">예약날짜</label>
-                        <input type="datetime-local" class="form-control" value=<%=dateTime%> name="Date" />     
+                        <input type="datetime-local" class="form-control" value=<%=dateTime%> name="bookingDateTime" />     
                      </div>
                      </div>
-                     2021-06-01 18:26
                      
 
                      <div class="col-13">
@@ -220,21 +219,30 @@ request.setCharacterEncoding("utf-8");
                      </div>
                      </div>
                      
+                     <div class="col-13">
+                     <div class="col-12">
+                     <label style="color: #ffffff; padding-top:8px;" >차량 이용</label>
+                     <div class="btn-group" style="width:100%;" role="group" aria-label="Basic radio toggle button group">
                      
-                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                         <input type="radio" class="btn-check" name ="carNumber1" value="1" id="carNumber" autocomplete="off">
                          <label class="btn btn-outline-warning" for="carNumber">자차 이용</label>
-                    
+
                         <input type="radio" class="btn-check" name ="carNumber1" value="0" id="carNumber2" autocomplete="off" checked>
                        <label class="btn btn-outline-warning" for="carNumber2">이용 안함</label>
                       </div>
+                      </div>
+                     </div>
                       
+                      <div class="col-13">
                       <div class="col-12">
                         <label for="carNumber" class="form-label" style="color: #ffffff;">차 번호 입력</label>
                         <input type="text" class="form-control" name="carNumber" placeholder="<jsp:getProperty name="bookings" property="carNumber" />" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);">      
                      </div>
-                    
-                    <input type="submit" class="btn btn-warning form-control" value="수정하기">
+                     </div>
+                     
+                     
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" style="width:30%"class="btn btn-warning form-control" value="수정하기">
                     
                     <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
                     <script>

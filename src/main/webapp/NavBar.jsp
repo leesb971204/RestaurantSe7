@@ -86,8 +86,9 @@
     	          		  <li><a class="dropdown-item" href="ManageTable.jsp" >테이블 수정</a></li>
         	      		  <li><a class="dropdown-item" href="AdminManage.jsp">전체 회원 확인</a></li>
         	      		  <li><a class="dropdown-item" href="AdminRInfo.jsp">예약자 정보 확인</a></li>
+        	      		  <li><a class="dropdown-item" href="WaitingList.jsp">대기 리스트</a></li>
                      </ul>
-               <%                  
+               <%
                }
                else{
                   %>
@@ -95,8 +96,9 @@
                      <ul class="dropdown-menu" aria-labelledby="dropdown01">
                           <li><a class="dropdown-item" href="BookingConfirm.jsp">예약하기</a></li>
                           <li><hr class="dropdown-divider" /></li>
+                          <li><a class="dropdown-item" href="ListConfirm.jsp" >대기정보 확인</a></li>
                           <li><a class="dropdown-item" href="ReservationConfirm.jsp" >예약정보 확인</a></li>
-                          <li><a class="dropdown-item" href="ManageReservation.jsp">예약 수정</a></li>
+                          <li><a class="dropdown-item" href="WaitingConfirm.jsp">예약 수정</a></li>
                           <li><hr class="dropdown-divider" /></li>
                           <li><a class="dropdown-item" href="ReservationConfirm.jsp">예약 취소</a></li>
                      </ul>

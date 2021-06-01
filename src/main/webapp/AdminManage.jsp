@@ -41,8 +41,8 @@ request.setCharacterEncoding("utf-8");
         text-align: center;
       }
     </style>
-
-<title>Insert title here</title>
+<link rel="shortcut icon" type="image/x-icon" href="./resources/images/seven.svg">
+<title>SE Team7 Restaurant Booking System // AdminManage</title>
 <!-- Custom styles for this template -->
    <link href="dashboard.css" rel="stylesheet">
     <link href="css/bootstrap.css">
@@ -53,14 +53,15 @@ request.setCharacterEncoding("utf-8");
 <div class="row">
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style = "margin-right : 111px;">
    <h2>회원 정보 확인</h2>
+   <br>
    <div class="table-responsive">
-      <table class="table table-striped table-sm">
+      <table class="table">
          <thead>
             <tr>
-               <th width = "10%">#</th>
-               <th width = "20%">이름</th>
-               <th width = "35%">전화번호</th>
-               <th width = "35%">이메일</th>
+               <th width = "10%" style = "background-color:#dcdcdc;">#</th>
+               <th width = "20%" style = "background-color:#dcdcdc;">이름</th>
+               <th width = "35%" style = "background-color:#dcdcdc;">전화번호</th>
+               <th width = "35%" style = "background-color:#dcdcdc;">이메일</th>
             </tr>
          </thead>
          <%

@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@page import="user.User"%>
+<%@page import="user.UserDAO"%>    
 <%@page import="statistics.Statistics"%>
 <%@page import="statistics.StatisticsDAO"%>   
 <%@page import="java.io.PrintWriter"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -13,8 +14,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+   <link rel="shortcut icon" type="image/x-icon" href="./resources/images/seven.svg">
+    <title>SE Team7 Restaurant Booking System // Chart</title>
 
-    <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="resources/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,6 +31,15 @@
 </head>
 
 <body id="page-top">
+<%
+      // 메인 페이지로 이동했을 때 세션에 값이 담겨있는지 체크
+      String userID = null;
+      if(session.getAttribute("userID") != null){
+         userID = (String)session.getAttribute("userID");
+      }
+      
+%>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
       <%@ include file="NavBar.jsp"%>
@@ -119,7 +130,7 @@
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 현재 레스토랑 내 테이블 수</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" style="text-align:center;">
-				                                 <%=stat.getTableCount()%>개
+                                             <%=stat.getTableCount()%>개
                                             </div>
                                         </div>
                                     </div>
@@ -297,15 +308,7 @@
             </div>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+
 
        
         <!-- End of Content Wrapper -->
@@ -320,7 +323,6 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="resources/js/jquery.min.js"></script>
-    <script src="resources/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="resources/js/jquery.easing.min.js"></script>

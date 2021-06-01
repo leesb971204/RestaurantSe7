@@ -139,9 +139,9 @@ request.setCharacterEncoding("utf-8");
                      </div>
                      <br>
                      <div>
-                     &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-warning" onclick="location.href='Main.jsp'">메인으로</button>&nbsp;
-                     <button type="button" class="btn btn-warning" onclick="location.href='ManageMyInfo.jsp'">내 정보 수정</button>&nbsp;
-                     <button type="button" class="btn btn-warning" onclick="location.href='DeleteConfirm.jsp'">회원탈퇴</button>
+                     &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-warning" onclick="location.href='Main.jsp'" style="margin-top:5px;">메인으로</button>&nbsp;
+                     <button type="button" class="btn btn-warning" onclick="location.href='ManageMyInfo.jsp'" style="margin-top:5px;">내 정보 수정</button>&nbsp;
+                     <button type="button" class="btn btn-warning" onclick="location.href='DeleteConfirm.jsp'" style="margin-top:5px;">회원탈퇴</button>
                      </div>
                      </div>
                      </div>

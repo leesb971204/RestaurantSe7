@@ -28,37 +28,38 @@ public class BookingDAO {
 	}
 
 	public ArrayList<Table> getMyTable(int totalPeople) { //인원수를 만족하는 테이블들의 ID를 리턴
-	   String sql = "select tableID from `table` where tablePeople >= ? order by tablePeople asc";
-	   ArrayList<Table> list = new ArrayList<>();
-	   try {
-	         pstmt = conn.prepareStatement(sql);
-	         pstmt.setInt(1, totalPeople);
-	         rs = pstmt.executeQuery();
-	         while(rs.next()) {
-	        	  Table table = new Table();
-	        	  table.setTableID(rs.getInt(1));
-	        	  list.add(table);
-	          }
-	      }catch (Exception e) {
-	         e.printStackTrace();
-	      }
-	      return list;
-   }
-	
+		String sql = "select tableID from `table` where tablePeople >= ? AND tablePeople <= ? order by tablePeople asc";
+		ArrayList<Table> list = new ArrayList<>();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, totalPeople);
+			pstmt.setInt(2, totalPeople+2);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Table table = new Table();
+				table.setTableID(rs.getInt(1));
+				list.add(table);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 	public int getUsableTable(String bookingDateTime, int tableID) {
 		String sql = "select * from booking where tableID=? AND (bookingDateTime < (select str_to_date(?, '%Y-%m-%dT%H:%i')) + INTERVAL 2 HOUR AND bookingDateTime >= (select str_to_date(?, '%Y-%m-%dT%H:%i')) - INTERVAL 2 HOUR)";
 		try {
-	         pstmt = conn.prepareStatement(sql);
-	         pstmt.setInt(1, tableID);
-	         pstmt.setString(2, bookingDateTime);
-	         pstmt.setString(3, bookingDateTime);
-	         rs = pstmt.executeQuery();
-	         if(rs.next()) {
-	        	  return -1; //해당되는 데이터가 있는경우-예약중복
-	         } 
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, tableID);
+			pstmt.setString(2, bookingDateTime);
+			pstmt.setString(3, bookingDateTime);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return -1; //해당되는 데이터가 있는경우-예약중복
+			} 
 		} catch (Exception e) {
-	         e.printStackTrace();
-	    }
+			e.printStackTrace();
+		}
 		return 1; //해당되는 데이터가 없는경우-중복없음
 	}
 
@@ -211,4 +212,23 @@ public class BookingDAO {
 		}
 		return "Can't find";
 	}
+
+	public int updateReservation(String bookingDateTime, int ageOver, int ageUnder, int tableID, String carNumber, String userID) {
+		String sql = "update booking set bookingDateTime=?, ageOver=?, ageUnder=?, totalPeople=?, tableID=?, carNumber=? where userID=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bookingDateTime);
+			pstmt.setInt(2, ageOver);
+			pstmt.setInt(3, ageUnder);
+			pstmt.setInt(4, ageOver + ageUnder);
+			pstmt.setInt(5, tableID);
+			pstmt.setString(6, carNumber);
+			pstmt.setString(7, userID);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
 }

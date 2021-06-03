@@ -18,7 +18,7 @@ public class BookingDAO {
 		try {
 			String dbURL = "jdbc:mariadb://localhost:3306/se7";
 			String dbID = "root";
-			String dbPassword = "Joonhoo1!";
+			String dbPassword = "123456";
 			Class.forName("org.mariadb.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		} catch (Exception e) {
@@ -26,7 +26,7 @@ public class BookingDAO {
 		}
 	}
 
-	public ArrayList<Table> getMyTable(int totalPeople) { //인원수를 만족하는 테이블들의 ID를 리턴
+	public ArrayList<Table> getMyTable(int totalPeople) { //�씤�썝�닔瑜� 留뚯”�븯�뒗 �뀒�씠釉붾뱾�쓽 ID瑜� 由ы꽩
 		String sql = "select tableID from `table` where tablePeople >= ? AND tablePeople <= ? order by tablePeople asc";
 		ArrayList<Table> list = new ArrayList<>();
 		try {
@@ -54,12 +54,12 @@ public class BookingDAO {
 			pstmt.setString(3, bookingDateTime);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return -1; //해당되는 데이터가 있는경우-예약중복
+				return -1; //�빐�떦�릺�뒗 �뜲�씠�꽣媛� �엳�뒗寃쎌슦-�삁�빟以묐났
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 1; //해당되는 데이터가 없는경우-중복없음
+		return 1; //�빐�떦�릺�뒗 �뜲�씠�꽣媛� �뾾�뒗寃쎌슦-以묐났�뾾�쓬
 	}
 
 	public int reservation(String userID, String userPhone, String bookingDateTime, int ageOver, int ageUnder,
@@ -208,7 +208,7 @@ public class BookingDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "탈퇴한 회원입니다";
+		return "�깉�눜�븳 �쉶�썝�엯�땲�떎";
 	}
 
 	public int updateReservation(String bookingDateTime, int ageOver, int ageUnder, int tableID, String carNumber, String userID) {

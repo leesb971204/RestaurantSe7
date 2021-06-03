@@ -17,7 +17,7 @@ public class WaitingDAO {
       try {
          String dbURL = "jdbc:mariadb://localhost:3306/se7";
          String dbID = "root";
-         String dbPassword = "Joonhoo1!";
+         String dbPassword = "123456";
          Class.forName("org.mariadb.jdbc.Driver");
          conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
       } catch (Exception e) {
@@ -143,12 +143,12 @@ public class WaitingDAO {
             pstmt.setString(3, bookingDateTime);
             rs = pstmt.executeQuery();
             if(rs.next()) {
-                return -1; //해당되는 데이터가 있는경우-예약중복
+                return -1; //�빐�떦�릺�뒗 �뜲�씠�꽣媛� �엳�뒗寃쎌슦-�삁�빟以묐났
             } 
       } catch (Exception e) {
             e.printStackTrace();
        }
-      return 1; //해당되는 데이터가 없는경우-중복없음
+      return 1; //�빐�떦�릺�뒗 �뜲�씠�꽣媛� �뾾�뒗寃쎌슦-以묐났�뾾�쓬
    }
    
    public int deleteWaiting(int priority) {

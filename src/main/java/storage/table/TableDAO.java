@@ -17,7 +17,7 @@ public class TableDAO {
       try {
          String dbURL = "jdbc:mariadb://localhost:3306/se7";
          String dbID = "root";
-         String dbPassword = "Joonhoo1!";
+         String dbPassword = "123456";
          Class.forName("org.mariadb.jdbc.Driver");
          conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
       }catch(Exception e) {
@@ -46,9 +46,9 @@ public class TableDAO {
       try {
          pstmt = conn.prepareStatement(sql);
          pstmt.setInt(1, tableID());
-         pstmt.setString(2, "테이블 이름");
+         pstmt.setString(2, "�뀒�씠釉� �씠由�");
          pstmt.setInt(3, 0);
-         pstmt.setString(4, "비고");
+         pstmt.setString(4, "鍮꾧퀬");
          return pstmt.executeUpdate();
       }catch (Exception e) {
          e.printStackTrace();

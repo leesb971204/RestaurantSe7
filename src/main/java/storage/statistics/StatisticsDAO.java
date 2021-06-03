@@ -18,7 +18,7 @@ public class StatisticsDAO {
       try {
          String dbURL = "jdbc:mariadb://localhost:3306/se7";
          String dbID = "root";
-         String dbPassword = "Joonhoo1!";
+         String dbPassword = "123456";
          Class.forName("org.mariadb.jdbc.Driver");
          conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
       }catch(Exception e) {
@@ -30,7 +30,7 @@ public class StatisticsDAO {
       Calendar cal = Calendar.getInstance();
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
       String datestr = sdf.format(cal.getTime());
-      stat.setToday(Integer.toString(cal.get(Calendar.MONTH)+1)+"월 "+Integer.toString(cal.get(Calendar.DATE))+"일");
+      stat.setToday(Integer.toString(cal.get(Calendar.MONTH)+1)+"�썡 "+Integer.toString(cal.get(Calendar.DATE))+"�씪");
       
       try {
          String sql = "select count(*) from booking where bookingDateTime like ?";
@@ -49,11 +49,11 @@ public class StatisticsDAO {
          if(rs.next()) {
             stat.setTodayReservationTotal(rs.getInt(1));
          }
-         return 1; //성공
+         return 1; //�꽦怨�
       }catch(Exception e) {
          e.printStackTrace();
       }
-      return -1; //실패
+      return -1; //�떎�뙣
    }
    
    public int getWeekStat(Statistics stat) {
@@ -62,13 +62,13 @@ public class StatisticsDAO {
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
       String datestr = sdf.format(cal.getTime());
       
-      int firstMonth = cal.get(Calendar.MONTH); //0부터 11까지
+      int firstMonth = cal.get(Calendar.MONTH); //0遺��꽣 11源뚯�
       int lastMonth = cal.get(Calendar.MONTH);
       
-      int date = cal.get(Calendar.DATE); //계산을 위해 오늘 날짜가 필요함
-      int weekday = cal.get(Calendar.DAY_OF_WEEK); //1부터 7까지, 일~토 뜻함
-      int first = date-weekday+2; //이번주의 월요일날
-      int last = date+8-weekday; //이번주의 일요일날
+      int date = cal.get(Calendar.DATE); //怨꾩궛�쓣 �쐞�빐 �삤�뒛 �궇吏쒓� �븘�슂�븿
+      int weekday = cal.get(Calendar.DAY_OF_WEEK); //1遺��꽣 7源뚯�, �씪~�넗 �쑜�븿
+      int first = date-weekday+2; //�씠踰덉＜�쓽 �썡�슂�씪�궇
+      int last = date+8-weekday; //�씠踰덉＜�쓽 �씪�슂�씪�궇
       
       if(first<1) {
          firstMonth-=1;
@@ -88,8 +88,8 @@ public class StatisticsDAO {
          String sql2 = "select sum(totalPeople) from booking where bookingDateTime between ? and ?";
          pstmt = conn.prepareStatement(sql);
          
-         pstmt.setString(1, datestr+"-"+Integer.toString(firstMonth+1)+"-"+Integer.toString(first)+"%"); //이번주의 월요일 날짜부터
-         pstmt.setString(2, datestr+"-"+Integer.toString(lastMonth+1)+"-"+Integer.toString(last)+"%"); //이번주의 일요일 날짜까지
+         pstmt.setString(1, datestr+"-"+Integer.toString(firstMonth+1)+"-"+Integer.toString(first)+"%"); //�씠踰덉＜�쓽 �썡�슂�씪 �궇吏쒕��꽣
+         pstmt.setString(2, datestr+"-"+Integer.toString(lastMonth+1)+"-"+Integer.toString(last)+"%"); //�씠踰덉＜�쓽 �씪�슂�씪 �궇吏쒓퉴吏�
          
          rs=pstmt.executeQuery();
          if(rs.next()) {
@@ -97,18 +97,18 @@ public class StatisticsDAO {
          }
          
          pstmt=conn.prepareStatement(sql2);
-         pstmt.setString(1, datestr+"-"+Integer.toString(firstMonth+1)+"-"+Integer.toString(first)+"%"); //이번주의 월요일 날짜부터
-         pstmt.setString(2, datestr+"-"+Integer.toString(lastMonth+1)+"-"+Integer.toString(last)+"%"); //이번주의 일요일 날짜까지
+         pstmt.setString(1, datestr+"-"+Integer.toString(firstMonth+1)+"-"+Integer.toString(first)+"%"); //�씠踰덉＜�쓽 �썡�슂�씪 �궇吏쒕��꽣
+         pstmt.setString(2, datestr+"-"+Integer.toString(lastMonth+1)+"-"+Integer.toString(last)+"%"); //�씠踰덉＜�쓽 �씪�슂�씪 �궇吏쒓퉴吏�
          rs=pstmt.executeQuery();
          
          if(rs.next()) {
             stat.setWeekReservationTotal(rs.getInt(1));
          }
-         return 1; //성공
+         return 1; //�꽦怨�
       }catch(Exception e) {
          e.printStackTrace();
       }
-      return -1; //실패
+      return -1; //�떎�뙣
    }
    
   
@@ -117,8 +117,8 @@ public class StatisticsDAO {
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
       String datestr = sdf.format(cal.getTime());
       int month=cal.get(Calendar.MONTH)+1;
-      stat.setFirstMonth(Integer.toString(month)+"월 1일");
-      stat.setLastMonth(Integer.toString(month)+"월 "+Integer.toString(months[month])+"일");
+      stat.setFirstMonth(Integer.toString(month)+"�썡 1�씪");
+      stat.setLastMonth(Integer.toString(month)+"�썡 "+Integer.toString(months[month])+"�씪");
 
       try {
       String sql = "select count(*) from booking where bookingDateTime like ?";
@@ -137,12 +137,12 @@ public class StatisticsDAO {
          stat.setMonthReservationTotal(rs.getInt(1));
          
       }
-      return 1; //성공
+      return 1; //�꽦怨�
       
       }catch(Exception e) {
          e.printStackTrace();
       }
-      return -1; //실패
+      return -1; //�떎�뙣
    }
 
    public int getTableCount(Statistics stat) {
@@ -154,12 +154,12 @@ public class StatisticsDAO {
       if(rs.next()) {
          stat.setTableCount(rs.getInt(1));
       }
-      return 1; //성공
+      return 1; //�꽦怨�
       
       }catch(Exception e) {
          e.printStackTrace();
       }
-      return -1; //실패
+      return -1; //�떎�뙣
    }
       
    public int getEachMonthStatistics(String Date) {

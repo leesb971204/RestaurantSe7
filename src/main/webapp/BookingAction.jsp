@@ -65,7 +65,15 @@
          }
       }
       
-      if(tableID == -1) {
+      if(totalPeople > bookingDAO.getMostTable()){
+         PrintWriter script = response.getWriter();
+         script.println("<script>");
+          script.println("alert('           매장내 한 테이블에 수용이 불가능한 인원수입니다.\\n           매장으로 연락 부탁드립니다. - Tel : 010-xxxx-xxxx')");
+          script.println("location.href='Main.jsp'");
+          script.println("</script>");
+      }
+      
+      else if(tableID == -1) {
          PrintWriter script = response.getWriter();
          waitingDAO.reservationWaiting(userID, users1.getUserPhone(), booking.getBookingDateTime(), booking.getAgeOver(), booking.getAgeUnder(), booking.getTableID(), booking.getCarNumber(), booking.getNotCancel(), waitingDAO.priority());
          script.println("<script>");

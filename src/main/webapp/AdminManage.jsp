@@ -21,7 +21,7 @@ request.setCharacterEncoding("utf-8");
 <link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
 <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
 <meta name="theme-color" content="#7952b3">
-
+<title>SE Team7 Restaurant Booking System // AdminManage</title>
 <%@ include file="NavBar.jsp"%>
     <style type = "text/css">
       .bd-placeholder-img {
@@ -42,7 +42,7 @@ request.setCharacterEncoding("utf-8");
       }
     </style>
 <link rel="shortcut icon" type="image/x-icon" href="./resources/images/seven.svg">
-<title>SE Team7 Restaurant Booking System // AdminManage</title>
+
 <!-- Custom styles for this template -->
    <link href="dashboard.css" rel="stylesheet">
     <link href="css/bootstrap.css">

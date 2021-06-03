@@ -59,7 +59,7 @@ request.setCharacterEncoding("utf-8");
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style = "margin-right : 111px;">
    <h2 style="color: #ffffff;">예약 대기리스트 명단</h2>
    <br>
-   <h8 style="color:#ffffff;">이 명단은 총원이 적은 순, 날짜가 빠른 순으로 정렬되어 있습니다.</h8>
+   <h8 style="color:#ffffff;">이 명단은 날짜가 빠른 순, 총원이 적은 순으로 정렬되어 있습니다.</h8>
    <br>
    <br>
    <div class="table-responsive">

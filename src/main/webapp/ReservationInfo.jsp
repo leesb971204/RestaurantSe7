@@ -188,7 +188,7 @@ img:hover{
                <div class="col-12">
                   <label for="tableID" class="form-label" style="color: #ffffff;">테이블 이름</label><br /> <input
                      type="text" class="form-control"
-                     placeholder=<jsp:getProperty name="bookings" property="carNumber" />
+                     placeholder=<jsp:getProperty name="tables" property="tableName" />
                      name="to" disabled />
                </div>
             </div>

@@ -19,7 +19,7 @@ public class BookingDAO {
 		try {
 			String dbURL = "jdbc:mariadb://localhost:3306/se7";
 			String dbID = "root";
-			String dbPassword = "Joonhoo1!";
+			String dbPassword = "1234";
 			Class.forName("org.mariadb.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		} catch (Exception e) {
@@ -230,5 +230,19 @@ public class BookingDAO {
 			return -1;
 		}
 	}
+	
+	public int getMostTable() {
+	      String sql = "select tablePeople from `table` order by tablePeople desc";
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         if (rs.next()) {
+	            return rs.getInt(1);
+	         }
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      return -1;
+	   }
 
 }
